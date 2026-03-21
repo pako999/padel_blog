@@ -57,14 +57,15 @@ export async function generateStaticParams() {
   return SUPPORTED_LANGS.map(lang => ({ lang }));
 }
 
-export async function generateMetadata({ params }: { params: { lang: Lang } }): Promise<Metadata> {
-  if (!SUPPORTED_LANGS.includes(params.lang)) return {};
-  const meta = PAGE_META[params.lang];
+export async function generateMetadata({ params }: { params: Promise<{ lang: Lang }> }): Promise<Metadata> {
+  const { lang } = await params;
+  if (!SUPPORTED_LANGS.includes(lang)) return {};
+  const meta = PAGE_META[lang];
   return {
     title: meta.title,
     description: meta.description,
     alternates: {
-      canonical: `${BASE_URL}/${params.lang}/blog`,
+      canonical: `${BASE_URL}/${lang}/blog`,
       languages: Object.fromEntries(
         SUPPORTED_LANGS.map(l => [l, `${BASE_URL}/${l}/blog`])
       ),
@@ -72,11 +73,12 @@ export async function generateMetadata({ params }: { params: { lang: Lang } }): 
   };
 }
 
-export default function BlogIndexPage({ params }: { params: { lang: Lang } }) {
-  if (!SUPPORTED_LANGS.includes(params.lang)) notFound();
+export default async function BlogIndexPage({ params }: { params: Promise<{ lang: Lang }> }) {
+  const { lang } = await params;
+  if (!SUPPORTED_LANGS.includes(lang)) notFound();
 
-  const posts = getAllPosts(params.lang);
-  const meta = PAGE_META[params.lang];
+  const posts = getAllPosts(lang);
+  const meta = PAGE_META[lang];
 
   const clusters = [...new Set(posts.map(p => p.cluster))];
 
@@ -90,7 +92,7 @@ export default function BlogIndexPage({ params }: { params: { lang: Lang } }) {
       {/* Language switcher */}
       <nav className="lang-switcher" aria-label="Language">
         {SUPPORTED_LANGS.map(l => (
-          <Link key={l} href={`/${l}/blog`} className={l === params.lang ? 'active' : ''}>
+          <Link key={l} href={`/${l}/blog`} className={l === lang ? 'active' : ''}>
             {l.toUpperCase()}
           </Link>
         ))}
@@ -105,7 +107,7 @@ export default function BlogIndexPage({ params }: { params: { lang: Lang } }) {
             <div className="post-grid">
               {clusterPosts.map(post => (
                 <article key={post.slug} className="post-card">
-                  <Link href={`/${params.lang}/blog/${post.slug}`}>
+                  <Link href={`/${lang}/blog/${post.slug}`}>
                     <h3>{post.title}</h3>
                     <p>{post.description}</p>
                     <div className="post-card-meta">

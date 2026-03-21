@@ -14,7 +14,7 @@ const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://marbellapadel.com'
 // ─── Static params for build-time generation ──────────────────────────────────
 
 export async function generateStaticParams() {
-  const params = [];
+  const params: { lang: Lang; slug: string }[] = [];
   for (const lang of SUPPORTED_LANGS) {
     const slugs = getPostSlugs(lang);
     slugs.forEach(slug => params.push({ lang, slug }));
@@ -27,13 +27,14 @@ export async function generateStaticParams() {
 export async function generateMetadata({
   params,
 }: {
-  params: { lang: Lang; slug: string };
+  params: Promise<{ lang: Lang; slug: string }>;
 }): Promise<Metadata> {
-  const post = getPost(params.lang, params.slug);
+  const { lang, slug } = await params;
+  const post = getPost(lang, slug);
   if (!post) return {};
 
-  const hreflang = getHreflangAlternates(params.slug, BASE_URL);
-  const canonicalUrl = `${BASE_URL}/${params.lang}/blog/${params.slug}`;
+  const hreflang = getHreflangAlternates(slug, BASE_URL);
+  const canonicalUrl = `${BASE_URL}/${lang}/blog/${slug}`;
 
   return {
     title: `${post.title} | MarbellapadEL`,
@@ -45,7 +46,7 @@ export async function generateMetadata({
       description: post.description,
       url: canonicalUrl,
       siteName: 'MarbellapadEL',
-      locale: params.lang,
+      locale: lang,
       type: 'article',
       publishedTime: post.publishedAt,
       modifiedTime: post.updatedAt,
@@ -64,16 +65,17 @@ export async function generateMetadata({
 
 // ─── Page component ───────────────────────────────────────────────────────────
 
-export default function BlogPostPage({
+export default async function BlogPostPage({
   params,
 }: {
-  params: { lang: Lang; slug: string };
+  params: Promise<{ lang: Lang; slug: string }>;
 }) {
-  const post = getPost(params.lang, params.slug);
+  const { lang, slug } = await params;
+  const post = getPost(lang, slug);
   if (!post) notFound();
 
-  const canonicalUrl = `${BASE_URL}/${params.lang}/blog/${params.slug}`;
-  const hreflang = getHreflangAlternates(params.slug, BASE_URL);
+  const canonicalUrl = `${BASE_URL}/${lang}/blog/${slug}`;
+  const hreflang = getHreflangAlternates(slug, BASE_URL);
 
   // Parse schema from frontmatter
   let schemaJson = null;
@@ -87,7 +89,7 @@ export default function BlogPostPage({
       {hreflang.map(h => (
         <link key={h.lang} rel="alternate" hrefLang={h.lang} href={h.url} />
       ))}
-      <link rel="alternate" hrefLang="x-default" href={`${BASE_URL}/en/blog/${params.slug}`} />
+      <link rel="alternate" hrefLang="x-default" href={`${BASE_URL}/en/blog/${slug}`} />
 
       {/* JSON-LD Article schema */}
       {schemaJson && (
@@ -103,7 +105,7 @@ export default function BlogPostPage({
             <span className="post-cluster">{post.cluster}</span>
             <span className="post-reading-time">{post.readingTime} min read</span>
             <time dateTime={post.publishedAt}>
-              {new Date(post.publishedAt).toLocaleDateString(params.lang, {
+              {new Date(post.publishedAt).toLocaleDateString(lang, {
                 year: 'numeric', month: 'long', day: 'numeric'
               })}
             </time>
