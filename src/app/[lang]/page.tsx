@@ -640,7 +640,7 @@ export default async function HomePage({
           <p className="section-label">{meta.whyLabel}</p>
           <h2 className="section-title">{meta.advertiseTitle}</h2>
           <p>{meta.advertiseBody}</p>
-          <Link href={`/${lang}/advertise`} className="btn-primary">
+          <Link href="/advertise" className="btn-primary">
             {meta.advertiseCta}
           </Link>
         </section>
@@ -665,7 +665,7 @@ export default async function HomePage({
             <Link href={`/${lang}/blog`} className="footer-link">
               {meta.navBlog}
             </Link>
-            <Link href={`/${lang}/advertise`} className="footer-link">
+            <Link href="/advertise" className="footer-link">
               Advertise
             </Link>
             {SUPPORTED_LANGS.map(l => (

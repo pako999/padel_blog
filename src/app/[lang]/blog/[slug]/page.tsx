@@ -1,17 +1,108 @@
 /**
  * app/[lang]/blog/[slug]/page.tsx
- * Individual blog post page — fully SEO-optimized
- * Handles all 8 languages via the [lang] dynamic segment
+ * Individual blog post — Mediterranean luxury editorial design
  */
 
 import { notFound } from 'next/navigation';
+import Link from 'next/link';
 import type { Metadata } from 'next';
 import { MDXRemote } from 'next-mdx-remote/rsc';
-import { getPost, getPostSlugs, getHreflangAlternates, SUPPORTED_LANGS, type Lang } from '@/lib/blog';
+import {
+  getPost,
+  getPostSlugs,
+  getHreflangAlternates,
+  SUPPORTED_LANGS,
+  type Lang,
+} from '@/lib/blog';
 
 const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://marbellapadel.com';
 
-// ─── Static params for build-time generation ──────────────────────────────────
+interface UiStrings {
+  blog: string;
+  clubs: string;
+  backToBlog: string;
+  ctaTitle: string;
+  ctaBody: string;
+  ctaBtn: string;
+  footerTagline: string;
+}
+
+const UI: Record<Lang, UiStrings> = {
+  en: {
+    blog: 'Blog',
+    clubs: 'Clubs',
+    backToBlog: '← Back to guide',
+    ctaTitle: 'Own a padel club in Marbella?',
+    ctaBody: 'Get featured on the #1 Marbella padel guide. Reach thousands of players searching for courts every month.',
+    ctaBtn: 'List your club →',
+    footerTagline: 'The #1 multilingual padel guide for Marbella',
+  },
+  de: {
+    blog: 'Blog',
+    clubs: 'Clubs',
+    backToBlog: '← Zurück zum Ratgeber',
+    ctaTitle: 'Haben Sie einen Padel-Club in Marbella?',
+    ctaBody: 'Erscheinen Sie im #1 Marbella Padel-Ratgeber. Erreichen Sie tausende Spieler jeden Monat.',
+    ctaBtn: 'Club eintragen →',
+    footerTagline: 'Der #1 mehrsprachige Padel-Ratgeber für Marbella',
+  },
+  sv: {
+    blog: 'Blogg',
+    clubs: 'Klubbar',
+    backToBlog: '← Tillbaka till guiden',
+    ctaTitle: 'Äger du en padelklubb i Marbella?',
+    ctaBody: 'Bli presenterad i den #1 padelguiden för Marbella. Nå tusentals spelare varje månad.',
+    ctaBtn: 'Lista din klubb →',
+    footerTagline: 'Den #1 flerspråkiga padelguiden för Marbella',
+  },
+  nl: {
+    blog: 'Blog',
+    clubs: 'Clubs',
+    backToBlog: '← Terug naar gids',
+    ctaTitle: 'Heeft u een padelclub in Marbella?',
+    ctaBody: 'Word gepresenteerd in de #1 Marbella padelgids. Bereik duizenden spelers elke maand.',
+    ctaBtn: 'Uw club vermelden →',
+    footerTagline: 'De #1 meertalige padelgids voor Marbella',
+  },
+  fr: {
+    blog: 'Blog',
+    clubs: 'Clubs',
+    backToBlog: '← Retour au guide',
+    ctaTitle: 'Vous avez un club de padel à Marbella?',
+    ctaBody: "Soyez présenté dans le guide padel #1 de Marbella. Touchez des milliers de joueurs chaque mois.",
+    ctaBtn: 'Lister votre club →',
+    footerTagline: 'Le guide padel multilingue #1 pour Marbella',
+  },
+  es: {
+    blog: 'Blog',
+    clubs: 'Clubs',
+    backToBlog: '← Volver a la guía',
+    ctaTitle: '¿Tienes un club de pádel en Marbella?',
+    ctaBody: 'Aparece en la guía de pádel #1 de Marbella. Llega a miles de jugadores cada mes.',
+    ctaBtn: 'Listar tu club →',
+    footerTagline: 'La guía de pádel multilingüe #1 para Marbella',
+  },
+  pl: {
+    blog: 'Blog',
+    clubs: 'Kluby',
+    backToBlog: '← Powrót do przewodnika',
+    ctaTitle: 'Masz klub padlowy w Marbelli?',
+    ctaBody: 'Zaistniej w przewodniku padlowym #1 dla Marbelli. Dotrzyj do tysięcy graczy każdego miesiąca.',
+    ctaBtn: 'Dodaj swój klub →',
+    footerTagline: 'Wielojęzyczny przewodnik padlowy #1 dla Marbelli',
+  },
+  no: {
+    blog: 'Blogg',
+    clubs: 'Klubber',
+    backToBlog: '← Tilbake til guiden',
+    ctaTitle: 'Eier du en padelklubb i Marbella?',
+    ctaBody: 'Bli presentert i den #1 padelguiden for Marbella. Nå tusenvis av spillere hver måned.',
+    ctaBtn: 'List klubben din →',
+    footerTagline: 'Den #1 flerspråklige padelguiden for Marbella',
+  },
+};
+
+// ─── Static params ────────────────────────────────────────────────────────────
 
 export async function generateStaticParams() {
   const params: { lang: Lang; slug: string }[] = [];
@@ -22,7 +113,7 @@ export async function generateStaticParams() {
   return params;
 }
 
-// ─── Metadata / SEO ──────────────────────────────────────────────────────────
+// ─── Metadata ─────────────────────────────────────────────────────────────────
 
 export async function generateMetadata({
   params,
@@ -74,10 +165,9 @@ export default async function BlogPostPage({
   const post = getPost(lang, slug);
   if (!post) notFound();
 
-  const canonicalUrl = `${BASE_URL}/${lang}/blog/${slug}`;
   const hreflang = getHreflangAlternates(slug, BASE_URL);
+  const ui = UI[lang];
 
-  // Parse schema from frontmatter
   let schemaJson = null;
   try {
     if (post.schema) schemaJson = JSON.parse(post.schema);
@@ -91,7 +181,6 @@ export default async function BlogPostPage({
       ))}
       <link rel="alternate" hrefLang="x-default" href={`${BASE_URL}/en/blog/${slug}`} />
 
-      {/* JSON-LD Article schema */}
       {schemaJson && (
         <script
           type="application/ld+json"
@@ -99,34 +188,103 @@ export default async function BlogPostPage({
         />
       )}
 
-      <article className="blog-post">
-        <header className="post-header">
-          <div className="post-meta">
-            <span className="post-cluster">{post.cluster}</span>
-            <span className="post-reading-time">{post.readingTime} min read</span>
-            <time dateTime={post.publishedAt}>
-              {new Date(post.publishedAt).toLocaleDateString(lang, {
-                year: 'numeric', month: 'long', day: 'numeric'
-              })}
-            </time>
+      {/* ── Navigation ── */}
+      <nav className="site-nav">
+        <div className="nav-inner">
+          <Link href={`/${lang}`} className="nav-logo">
+            MarbellapadEL
+          </Link>
+          <div className="nav-links">
+            <Link href={`/${lang}/clubs`} className="nav-link">{ui.clubs}</Link>
+            <Link href={`/${lang}/blog`} className="nav-link">{ui.blog}</Link>
           </div>
-          <h1>{post.title}</h1>
-          <p className="post-description">{post.description}</p>
-        </header>
-
-        <div className="post-content">
-          <MDXRemote source={post.content} />
+          <div className="lang-pills" aria-label="Language switcher">
+            {SUPPORTED_LANGS.map(l => (
+              <Link
+                key={l}
+                href={`/${l}/blog/${slug}`}
+                className={`lang-pill${l === lang ? ' active' : ''}`}
+              >
+                {l.toUpperCase()}
+              </Link>
+            ))}
+          </div>
         </div>
+      </nav>
 
-        {/* Advertise CTA — shown on every post */}
-        <div className="advertise-cta">
-          <h3>Own a padel club in Marbella?</h3>
-          <p>Get featured on the #1 Marbella padel guide. Reach thousands of players searching for courts every month.</p>
-          <a href="/advertise" className="cta-button">
-            List your club →
-          </a>
+      <main>
+        <article className="article-page">
+
+          {/* Breadcrumb */}
+          <nav className="article-breadcrumb" aria-label="Breadcrumb">
+            <Link href={`/${lang}`}>MarbellapadEL</Link>
+            <span className="article-breadcrumb-sep">/</span>
+            <Link href={`/${lang}/blog`}>{ui.blog}</Link>
+            <span className="article-breadcrumb-sep">/</span>
+            <span>{post.cluster.replace(/-/g, ' ')}</span>
+          </nav>
+
+          {/* Article header */}
+          <header className="article-header">
+            <div className="article-meta-bar">
+              <span className="article-cluster-tag">
+                {post.cluster.replace(/-/g, ' ')}
+              </span>
+              <time className="article-date" dateTime={post.publishedAt}>
+                {new Date(post.publishedAt).toLocaleDateString(lang, {
+                  year: 'numeric',
+                  month: 'long',
+                  day: 'numeric',
+                })}
+              </time>
+              <span className="article-reading-time">{post.readingTime} min</span>
+            </div>
+            <h1 className="article-title">{post.title}</h1>
+            <p className="article-description">{post.description}</p>
+          </header>
+
+          {/* MDX content with full prose styles */}
+          <div className="prose">
+            <MDXRemote source={post.content} />
+          </div>
+
+          {/* End CTA */}
+          <div className="article-end-cta">
+            <h3>{ui.ctaTitle}</h3>
+            <p>{ui.ctaBody}</p>
+            <Link href="/advertise" className="btn-primary">{ui.ctaBtn}</Link>
+          </div>
+
+          {/* Back link */}
+          <Link href={`/${lang}/blog`} className="article-back-link">
+            {ui.backToBlog}
+          </Link>
+
+        </article>
+      </main>
+
+      {/* ── Footer ── */}
+      <footer className="site-footer">
+        <div className="footer-inner">
+          <div>
+            <Link href={`/${lang}`} className="footer-logo">MarbellapadEL</Link>
+            <p className="footer-tagline">{ui.footerTagline}</p>
+            <p className="footer-copyright">
+              © {new Date().getFullYear()} MarbellapadEL. All rights reserved.
+            </p>
+          </div>
+          <nav className="footer-links" aria-label="Footer navigation">
+            <Link href={`/${lang}/clubs`} className="footer-link">{ui.clubs}</Link>
+            <Link href={`/${lang}/blog`} className="footer-link">{ui.blog}</Link>
+            <Link href="/advertise" className="footer-link">Advertise</Link>
+            {SUPPORTED_LANGS.map(l => (
+              <Link key={l} href={`/${l}/blog/${slug}`} className="footer-link">
+                {l.toUpperCase()}
+              </Link>
+            ))}
+          </nav>
         </div>
-      </article>
+      </footer>
     </>
   );
 }

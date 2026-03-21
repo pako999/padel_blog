@@ -402,7 +402,7 @@ export default async function ClubProfilePage({
           {club.tier !== 'premium' && (
             <div className="upsell-banner">
               <p>{ui.upsellText}</p>
-              <Link href={`/${lang}/advertise`} className="btn-primary">
+              <Link href="/advertise" className="btn-primary">
                 {ui.upsellCta}
               </Link>
             </div>
