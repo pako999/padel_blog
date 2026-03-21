@@ -1,0 +1,63 @@
+name: Multilingual Translation
+
+on:
+  # Triggers after a new English post is committed
+  push:
+    paths:
+      - 'src/content/blog/en/**'
+  workflow_dispatch:
+    inputs:
+      source_file:
+        description: 'Path to English MDX file to translate'
+        required: true
+
+jobs:
+  translate:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    strategy:
+      matrix:
+        lang: [de, sv, nl, fr, es, pl, no]
+      # Translate all languages in parallel
+      fail-fast: false
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Find new English posts
+        id: find_posts
+        run: |
+          if [ -n "${{ github.event.inputs.source_file }}" ]; then
+            echo "files=${{ github.event.inputs.source_file }}" >> $GITHUB_OUTPUT
+          else
+            NEW_EN=$(git diff --name-only HEAD~1 HEAD -- 'src/content/blog/en/*.mdx' | tr '\n' ',')
+            echo "files=$NEW_EN" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Translate to ${{ matrix.lang }}
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          TARGET_LANG: ${{ matrix.lang }}
+          SOURCE_FILES: ${{ steps.find_posts.outputs.files }}
+        run: node scripts/translate-posts.js
+
+      - name: Commit translations
+        run: |
+          git config --local user.email "autopilot@marbellapadel.com"
+          git config --local user.name "Translation Bot"
+          git add src/content/blog/${{ matrix.lang }}/
+          git diff --staged --quiet || git commit -m "🌍 Auto-translate to ${{ matrix.lang }} [$(date +'%Y-%m-%d')]"
+          git push

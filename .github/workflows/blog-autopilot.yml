@@ -1,0 +1,71 @@
+name: Padel Blog Autopilot
+
+on:
+  schedule:
+    # Runs every day at 06:00 UTC — posts 3 articles per day
+    - cron: '0 6 * * *'
+  workflow_dispatch:
+    inputs:
+      posts_per_run:
+        description: 'Number of posts to generate'
+        required: false
+        default: '3'
+      language_filter:
+        description: 'Only generate for this language (leave empty for all)'
+        required: false
+        default: ''
+
+jobs:
+  generate-posts:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Generate blog posts
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          UNSPLASH_ACCESS_KEY: ${{ secrets.UNSPLASH_ACCESS_KEY }}
+          POSTS_PER_RUN: ${{ github.event.inputs.posts_per_run || '3' }}
+          LANGUAGE_FILTER: ${{ github.event.inputs.language_filter || '' }}
+        run: node scripts/generate-posts.js
+
+      - name: Check for new files
+        id: check_files
+        run: |
+          NEW_FILES=$(git status --porcelain | grep "^??" | wc -l)
+          echo "new_files=$NEW_FILES" >> $GITHUB_OUTPUT
+          echo "Found $NEW_FILES new blog post(s)"
+
+      - name: Commit and push new posts
+        if: steps.check_files.outputs.new_files > 0
+        run: |
+          git config --local user.email "autopilot@marbellapadel.com"
+          git config --local user.name "Padel Autopilot Bot"
+          git add src/content/blog/
+          git add keywords.json
+          git commit -m "🎾 Auto-publish $(git diff --cached --name-only | wc -l) padel blog post(s) [$(date +'%Y-%m-%d')]"
+          git push
+
+      - name: Ping Google Search Console
+        if: steps.check_files.outputs.new_files > 0
+        env:
+          SITE_URL: ${{ secrets.SITE_URL }}
+          GSC_KEY: ${{ secrets.GSC_SERVICE_ACCOUNT_KEY }}
+        run: node scripts/ping-gsc.js
+
+      - name: Notify on failure
+        if: failure()
+        run: |
+          echo "::warning::Blog generation failed. Check ANTHROPIC_API_KEY secret."
