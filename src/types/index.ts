@@ -17,6 +17,8 @@ export interface Court {
   bookingUrl: string;
   featured: boolean;
   image: string;
+  rating?: number;
+  reviewCount?: number;
 }
 
 export interface Post {
