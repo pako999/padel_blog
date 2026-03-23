@@ -7,19 +7,8 @@ const nextConfig = {
     remotePatterns: [
       { protocol: 'https', hostname: 'images.unsplash.com' },
       { protocol: 'https', hostname: 'plus.unsplash.com' },
+      { protocol: 'https', hostname: 'picsum.photos' },
     ],
-  },
-
-  // Internationalization — all routes under /[lang]
-  // Supported locales match our 8 languages
-  async redirects() {
-    return [
-      {
-        source: '/',
-        destination: '/en',
-        permanent: false,
-      },
-    ];
   },
 
   async headers() {

@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 /* ============================================================
    globals.css — MarbellapadEL Design System
    ============================================================ */
@@ -14,8 +18,8 @@
   --color-ink: #1A1A18;
   --color-muted: #6B6860;
   --color-terracotta-light: #F0E8E5;
-  --font-heading: 'Playfair Display', Georgia, serif;
-  --font-body: 'DM Sans', system-ui, sans-serif;
+  --font-heading: var(--font-playfair, 'Playfair Display', Georgia, serif);
+  --font-body: var(--font-dm-sans, 'DM Sans', system-ui, sans-serif);
 }
 
 /* ============================================================
