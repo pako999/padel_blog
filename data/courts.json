@@ -17,7 +17,7 @@
     "website": "https://nuevaalcantaraclub.com",
     "bookingUrl": "https://playtomic.io",
     "featured": true,
-    "image": "https://images.unsplash.com/photo-_RByC3M71KE?w=800&q=80&auto=format&fit=crop"
+    "image": "https://images.unsplash.com/photo-1554068865-24cecd4e34b8?w=800&q=80&auto=format&fit=crop"
   },
   {
     "slug": "puente-romano-padel",
@@ -37,7 +37,7 @@
     "website": "https://tenis.puenteromano.com",
     "bookingUrl": "https://playtomic.io",
     "featured": true,
-    "image": "https://images.unsplash.com/photo-ipbR4g6LnDs?w=800&q=80&auto=format&fit=crop"
+    "image": "https://images.unsplash.com/photo-1622279457486-62dcc4a431d6?w=800&q=80&auto=format&fit=crop"
   },
   {
     "slug": "real-club-padel-marbella",
@@ -57,7 +57,7 @@
     "website": "https://realclubpadelmarbella.com",
     "bookingUrl": "https://playtomic.io",
     "featured": true,
-    "image": "https://images.unsplash.com/photo-0ETJ5mnMWg8?w=800&q=80&auto=format&fit=crop"
+    "image": "https://images.unsplash.com/photo-1542144582-1ba00456b5e3?w=800&q=80&auto=format&fit=crop"
   },
   {
     "slug": "manolo-santana-racquets-club",
@@ -77,7 +77,7 @@
     "website": "https://manolosantana.es",
     "bookingUrl": "https://playtomic.io",
     "featured": false,
-    "image": "https://images.unsplash.com/photo-2ovB_R7TOWM?w=800&q=80&auto=format&fit=crop"
+    "image": "https://images.unsplash.com/photo-1545809074-59472b3f5ecc?w=800&q=80&auto=format&fit=crop"
   },
   {
     "slug": "los-monteros-racket-club",
@@ -97,7 +97,7 @@
     "website": "https://www.monteros.com/en/racket/",
     "bookingUrl": "https://playtomic.io",
     "featured": false,
-    "image": "https://images.unsplash.com/photo-db-KVhjl5Pc?w=800&q=80&auto=format&fit=crop"
+    "image": "https://images.unsplash.com/photo-1560012057-4372e14c5085?w=800&q=80&auto=format&fit=crop"
   },
   {
     "slug": "los-naranjos-padel",
@@ -117,7 +117,7 @@
     "website": "https://losnaranjospadel.com",
     "bookingUrl": "https://playtomic.io",
     "featured": false,
-    "image": "https://images.unsplash.com/photo-flW1kl55xiw?w=800&q=80&auto=format&fit=crop"
+    "image": "https://images.unsplash.com/photo-1587280501635-68a0e82cd5ff?w=800&q=80&auto=format&fit=crop"
   },
   {
     "slug": "villa-padierna-padel",
@@ -137,7 +137,7 @@
     "website": "https://www.villapadierna.es/en/padel/",
     "bookingUrl": "https://playtomic.io",
     "featured": false,
-    "image": "https://images.unsplash.com/photo-7AiSN6-VPLs?w=800&q=80&auto=format&fit=crop"
+    "image": "https://images.unsplash.com/photo-1602211844066-d3bb556e983b?w=800&q=80&auto=format&fit=crop"
   },
   {
     "slug": "club-padel-nueva-alcantara",
@@ -157,7 +157,7 @@
     "website": "https://www.clubpadelnuevaalcantara.com",
     "bookingUrl": "https://playtomic.io",
     "featured": false,
-    "image": "https://images.unsplash.com/photo-MxBFQeZTQkE?w=800&q=80&auto=format&fit=crop"
+    "image": "https://images.unsplash.com/photo-1595435934249-5df7ed86e1c0?w=800&q=80&auto=format&fit=crop"
   },
   {
     "slug": "club-tenis-padel-estepona",
@@ -177,6 +177,6 @@
     "website": "https://www.tenisestepona.com",
     "bookingUrl": "https://playtomic.io",
     "featured": false,
-    "image": "https://images.unsplash.com/photo-VrbrbXwcR8c?w=800&q=80&auto=format&fit=crop"
+    "image": "https://images.unsplash.com/photo-1526506118085-60ce8714f8c5?w=800&q=80&auto=format&fit=crop"
   }
 ]
