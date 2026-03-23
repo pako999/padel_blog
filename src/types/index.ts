@@ -8,6 +8,7 @@ export interface Court {
   priceFrom: number;
   priceTo: number;
   surface: string;
+  phone?: string;
   address: string;
   hours: string;
   description: string;

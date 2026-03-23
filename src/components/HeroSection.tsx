@@ -35,7 +35,7 @@ export default function HeroSection() {
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
         style={{
           backgroundImage:
-            "url('https://images.unsplash.com/photo-1554068865-24cecd4e34b8?w=1600&q=80&auto=format&fit=crop')",
+            "url('https://images.unsplash.com/photo-ipbR4g6LnDs?w=1600&q=80&auto=format&fit=crop')",
         }}
       />
 
