@@ -44,12 +44,12 @@ jobs:
       - name: Check for new files
         id: check_files
         run: |
-          NEW_FILES=$(git status --porcelain | grep "^??" | wc -l)
+          NEW_FILES=$(git status --porcelain | grep -c "^??" || true)
           echo "new_files=$NEW_FILES" >> $GITHUB_OUTPUT
           echo "Found $NEW_FILES new blog post(s)"
 
       - name: Commit and push new posts
-        if: steps.check_files.outputs.new_files > 0
+        if: steps.check_files.outputs.new_files != '0'
         run: |
           git config --local user.email "autopilot@marbellapadel.com"
           git config --local user.name "Padel Autopilot Bot"
