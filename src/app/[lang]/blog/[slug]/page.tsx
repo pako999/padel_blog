@@ -5,6 +5,7 @@
 
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
+import Image from 'next/image';
 import type { Metadata } from 'next';
 import { MDXRemote } from 'next-mdx-remote/rsc';
 import {
@@ -141,6 +142,7 @@ export async function generateMetadata({
       type: 'article',
       publishedTime: post.publishedAt,
       modifiedTime: post.updatedAt,
+      ...(post.coverImage && { images: [{ url: post.coverImage, width: 1200, height: 630 }] }),
     },
     twitter: {
       card: 'summary_large_image',
@@ -214,6 +216,21 @@ export default async function BlogPostPage({
 
       <main>
         <article className="article-page">
+
+          {/* Hero image */}
+          {post.coverImage && (
+            <div className="article-hero-image">
+              <Image
+                src={post.coverImage}
+                alt={post.title}
+                fill
+                className="object-cover"
+                priority
+                sizes="100vw"
+              />
+              <div className="article-hero-overlay" />
+            </div>
+          )}
 
           {/* Breadcrumb */}
           <nav className="article-breadcrumb" aria-label="Breadcrumb">

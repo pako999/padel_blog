@@ -24,6 +24,7 @@ export interface PostMeta {
   audience: string;
   featured: boolean;
   readingTime: number;
+  coverImage?: string;
   schema?: string;
 }
 

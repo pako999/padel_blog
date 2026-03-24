@@ -121,6 +121,38 @@ schema: |
 [ARTICLE CONTENT HERE — do not include the JSON-LD inline, it goes in frontmatter above]`;
 }
 
+// ─── Fetch cover image from Unsplash ─────────────────────────────────────────
+
+const FALLBACK_IMAGE = 'https://images.unsplash.com/photo-1554068865-24cecd4e34b8?w=1200&q=80&auto=format&fit=crop';
+
+async function fetchCoverImage(keyword) {
+  const key = process.env.UNSPLASH_ACCESS_KEY;
+  if (!key) {
+    console.log('  ℹ️  No UNSPLASH_ACCESS_KEY — using fallback image');
+    return FALLBACK_IMAGE;
+  }
+
+  // Try specific keyword first, then fall back to "padel marbella"
+  const queries = [`${keyword} padel`, 'padel court marbella', 'padel tennis court'];
+  for (const q of queries) {
+    try {
+      const url = `https://api.unsplash.com/search/photos?query=${encodeURIComponent(q)}&per_page=5&orientation=landscape&client_id=${key}`;
+      const res = await fetch(url);
+      if (!res.ok) break;
+      const data = await res.json();
+      if (data.results?.length > 0) {
+        // Pick a random one from top 5 for variety
+        const pick = data.results[Math.floor(Math.random() * data.results.length)];
+        console.log(`  🖼️  Image: ${pick.urls.regular.slice(0, 60)}...`);
+        return pick.urls.regular;
+      }
+    } catch (err) {
+      console.warn(`  ⚠️  Unsplash failed for "${q}":`, err.message);
+    }
+  }
+  return FALLBACK_IMAGE;
+}
+
 // ─── Call Claude API ──────────────────────────────────────────────────────────
 
 async function generatePost(kw) {
@@ -192,9 +224,19 @@ async function main() {
     console.log(`\n📝 Generating: "${kw.keyword}" [${kw.lang}]`);
 
     try {
-      const content = await generatePost(kw);
+      const [content, coverImage] = await Promise.all([
+        generatePost(kw),
+        fetchCoverImage(kw.keyword),
+      ]);
+
+      // Inject coverImage into the MDX frontmatter (before closing ---)
+      const mdxWithImage = content.replace(
+        /^(---[\s\S]*?)(---)/m,
+        `$1coverImage: "${coverImage}"\n$2`
+      );
+
       const slug = slugify(kw.keyword);
-      writeMdxFile(kw, content);
+      writeMdxFile(kw, mdxWithImage);
       markKeywordDone(kw.id, slug);
 
       // Rate limit: wait 2s between API calls

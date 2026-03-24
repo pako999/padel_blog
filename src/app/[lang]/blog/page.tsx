@@ -4,6 +4,7 @@
  */
 
 import Link from 'next/link';
+import Image from 'next/image';
 import type { Metadata } from 'next';
 import { getAllPosts, SUPPORTED_LANGS, type Lang } from '@/lib/blog';
 import { notFound } from 'next/navigation';
@@ -230,20 +231,33 @@ export default async function BlogIndexPage({
                       href={`/${lang}/blog/${post.slug}`}
                       className="blog-post-link"
                     >
-                      <div className="blog-post-link-number">
-                        {String(i + 1).padStart(2, '0')}
-                      </div>
-                      <div className="blog-post-link-title">{post.title}</div>
-                      <p className="blog-post-link-desc">{post.description}</p>
-                      <div className="blog-post-link-meta">
-                        <span>{post.readingTime} min</span>
-                        <span>
-                          {new Date(post.publishedAt).toLocaleDateString(lang, {
-                            year: 'numeric',
-                            month: 'long',
-                            day: 'numeric',
-                          })}
-                        </span>
+                      {post.coverImage && (
+                        <div className="blog-post-link-thumb">
+                          <Image
+                            src={post.coverImage}
+                            alt={post.title}
+                            fill
+                            className="object-cover"
+                            sizes="120px"
+                          />
+                        </div>
+                      )}
+                      <div className="blog-post-link-body">
+                        <div className="blog-post-link-number">
+                          {String(i + 1).padStart(2, '0')}
+                        </div>
+                        <div className="blog-post-link-title">{post.title}</div>
+                        <p className="blog-post-link-desc">{post.description}</p>
+                        <div className="blog-post-link-meta">
+                          <span>{post.readingTime} min</span>
+                          <span>
+                            {new Date(post.publishedAt).toLocaleDateString(lang, {
+                              year: 'numeric',
+                              month: 'long',
+                              day: 'numeric',
+                            })}
+                          </span>
+                        </div>
                       </div>
                     </Link>
                   ))}
