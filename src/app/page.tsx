@@ -1,3 +1,4 @@
+import type { Metadata } from 'next';
 import Link from 'next/link';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
@@ -9,6 +10,12 @@ import postsData from '../../data/posts.json';
 import type { Court } from '@/types';
 import type { Post } from '@/types';
 
+export const metadata: Metadata = {
+  title: 'Best Padel Courts in Marbella 2026 | Padel Marbella',
+  description: 'Find and book the best padel courts in Marbella. 12 clubs reviewed with real photos, prices, and direct booking links. The complete Costa del Sol padel guide.',
+  alternates: { canonical: 'https://padel-blog.vercel.app' },
+};
+
 const courts = courtsData as Court[];
 const posts = postsData as Post[];
 
@@ -16,7 +23,7 @@ const featuredCourts = courts.filter((c) => c.featured);
 const latestPosts = posts.slice(0, 3);
 
 const pageStats = [
-  { value: '9', label: 'Clubs', sublabel: 'reviewed & rated' },
+  { value: '12', label: 'Clubs', sublabel: 'reviewed & rated' },
   { value: '300+', label: 'Sunny Days', sublabel: 'per year' },
   { value: '€10/hr', label: 'From', sublabel: 'court hire price' },
   { value: '7', label: 'Areas', sublabel: 'covered on the Costa' },
@@ -114,7 +121,7 @@ export default function HomePage() {
               on the Costa del Sol's most trusted padel directory.
             </p>
             <Link
-              href="/courts"
+              href="/advertise"
               className="inline-block bg-white text-terracotta font-bold px-10 py-4 rounded-md hover:bg-sand-light transition-colors duration-200 shadow-lg"
             >
               Get Listed Today

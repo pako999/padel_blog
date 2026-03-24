@@ -1,0 +1,5 @@
+User-Agent: *
+Allow: /
+
+Host: https://padel-blog.vercel.app
+Sitemap: https://padel-blog.vercel.app/sitemap.xml

@@ -1,0 +1,16 @@
+{
+  "/_not-found/page": "/_not-found",
+  "/robots.txt/route": "/robots.txt",
+  "/sitemap.xml/route": "/sitemap.xml",
+  "/advertise/page": "/advertise",
+  "/courts/page": "/courts",
+  "/blog/page": "/blog",
+  "/blog/[slug]/page": "/blog/[slug]",
+  "/page": "/",
+  "/[lang]/blog/page": "/[lang]/blog",
+  "/[lang]/clubs/[slug]/page": "/[lang]/clubs/[slug]",
+  "/[lang]/blog/[slug]/page": "/[lang]/blog/[slug]",
+  "/[lang]/clubs/page": "/[lang]/clubs",
+  "/[lang]/page": "/[lang]",
+  "/courts/[slug]/page": "/courts/[slug]"
+}

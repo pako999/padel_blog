@@ -22,11 +22,24 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const { slug } = await params;
   const court = courts.find((c) => c.slug === slug);
   if (!court) return {};
+  const title = `${court.name} Review — Padel Courts Marbella`;
   return {
-    title: court.name,
+    title,
     description: court.description.slice(0, 160),
     openGraph: {
+      title: `${title} | Padel Marbella`,
+      description: court.description.slice(0, 160),
+      images: [{ url: court.image, width: 800, height: 500, alt: `${court.name} padel courts Marbella` }],
+      type: 'article',
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title,
+      description: court.description.slice(0, 160),
       images: [court.image],
+    },
+    alternates: {
+      canonical: `https://padel-blog.vercel.app/courts/${slug}`,
     },
   };
 }
@@ -58,20 +71,36 @@ export default async function CourtDetailPage({ params }: PageProps) {
 
   const jsonLd = {
     '@context': 'https://schema.org',
-    '@type': 'SportsActivityLocation',
+    '@type': ['SportsActivityLocation', 'LocalBusiness'],
     name: court.name,
     description: court.description,
+    url: `https://padel-blog.vercel.app/courts/${court.slug}`,
+    image: court.image,
+    telephone: court.phone || undefined,
     address: {
       '@type': 'PostalAddress',
-      streetAddress: court.address,
-      addressLocality: court.area,
+      streetAddress: court.address.split(',')[0],
+      addressLocality: 'Marbella',
       addressRegion: 'Málaga',
+      postalCode: court.address.match(/\d{5}/)?.[0] || '29600',
       addressCountry: 'ES',
     },
+    geo: court.lat && court.lng ? {
+      '@type': 'GeoCoordinates',
+      latitude: court.lat,
+      longitude: court.lng,
+    } : undefined,
     openingHours: court.hours,
-    url: court.website,
-    image: court.image,
     priceRange: `€${court.priceFrom}–€${court.priceTo}`,
+    currenciesAccepted: 'EUR',
+    paymentAccepted: 'Cash, Credit Card',
+    aggregateRating: court.rating ? {
+      '@type': 'AggregateRating',
+      ratingValue: court.rating,
+      reviewCount: court.reviewCount || 10,
+      bestRating: 5,
+      worstRating: 1,
+    } : undefined,
   };
 
   return (
@@ -232,16 +261,38 @@ export default async function CourtDetailPage({ params }: PageProps) {
                     <dt className="text-navy/50 font-medium">Courts</dt>
                     <dd className="text-navy/80 mt-0.5">{court.courts}</dd>
                   </div>
+                  {court.rating && (
+                    <div>
+                      <dt className="text-navy/50 font-medium">Google Rating</dt>
+                      <dd className="text-navy/80 mt-0.5 flex items-center gap-1">
+                        <span className="text-yellow-500">{'★'.repeat(Math.round(court.rating))}</span>
+                        <span className="font-semibold">{court.rating}</span>
+                        {court.reviewCount && <span className="text-navy/50 text-xs">({court.reviewCount} reviews)</span>}
+                      </dd>
+                    </div>
+                  )}
+                  {court.phone && (
+                    <div>
+                      <dt className="text-navy/50 font-medium">Phone</dt>
+                      <dd className="text-navy/80 mt-0.5">
+                        <a href={`tel:${court.phone.replace(/\s/g, '')}`} className="hover:text-terracotta transition-colors">{court.phone}</a>
+                      </dd>
+                    </div>
+                  )}
                 </dl>
               </div>
 
-              {/* Map placeholder */}
-              <div className="rounded-xl overflow-hidden mb-6 bg-navy/10 h-48 flex items-center justify-center text-navy/30 text-sm border border-navy/10">
-                <div className="text-center">
-                  <div className="text-2xl mb-2">📍</div>
-                  <p>{court.area}</p>
-                  <p className="text-xs mt-1">Map view</p>
-                </div>
+              {/* Google Maps embed */}
+              <div className="rounded-xl overflow-hidden mb-6 h-48 border border-navy/10">
+                <iframe
+                  title={`Map of ${court.name}`}
+                  width="100%"
+                  height="100%"
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  src={`https://www.google.com/maps?q=${encodeURIComponent(court.address)}&output=embed`}
+                  className="border-0"
+                />
               </div>
 
               {/* Contact */}

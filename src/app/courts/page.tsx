@@ -8,9 +8,14 @@ import type { Court } from '@/types';
 const courts = courtsData as Court[];
 
 export const metadata: Metadata = {
-  title: 'Find Padel Courts',
-  description:
-    'Discover and compare all padel clubs in Marbella and the Costa del Sol. Filter by area, price, and facilities to find your perfect court.',
+  title: 'Find Padel Courts in Marbella — 12 Clubs Reviewed',
+  description: 'Browse all 12 padel clubs in Marbella and the Costa del Sol. Compare facilities, prices and locations. Filter by area and book instantly via Playtomic.',
+  openGraph: {
+    title: 'Find Padel Courts in Marbella — 12 Clubs Reviewed | Padel Marbella',
+    description: 'Browse all 12 padel clubs in Marbella. Compare facilities, prices and locations.',
+    images: [{ url: 'https://images.unsplash.com/photo-1554068865-24cecd4e34b8?w=1200&q=80', width: 1200, height: 630 }],
+  },
+  alternates: { canonical: 'https://padel-blog.vercel.app/courts' },
 };
 
 export default function CourtsPage() {

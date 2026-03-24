@@ -10,9 +10,14 @@ import type { Post } from '@/types';
 const posts = postsData as Post[];
 
 export const metadata: Metadata = {
-  title: 'Padel Blog & Guides',
-  description:
-    'Tips, club reviews, tournament news, and gear guides for padel players on the Costa del Sol.',
+  title: 'Padel Marbella Blog — Club Reviews, Tips & News 2026',
+  description: 'Expert guides, club reviews and padel tips for Marbella and the Costa del Sol. Everything you need to play better padel in the south of Spain.',
+  openGraph: {
+    title: 'Padel Marbella Blog — Club Reviews, Tips & News 2026',
+    description: 'Expert guides, club reviews and padel tips for Marbella and the Costa del Sol.',
+    images: [{ url: 'https://images.unsplash.com/photo-1554068865-24cecd4e34b8?w=1200&q=80', width: 1200, height: 630 }],
+  },
+  alternates: { canonical: 'https://padel-blog.vercel.app/blog' },
 };
 
 function formatDate(dateStr: string): string {

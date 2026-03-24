@@ -9,6 +9,8 @@ export interface Court {
   priceTo: number;
   surface: string;
   phone?: string;
+  lat?: number;
+  lng?: number;
   address: string;
   hours: string;
   description: string;

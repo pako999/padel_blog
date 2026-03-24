@@ -56,7 +56,7 @@ export default function Navbar() {
             ))}
             <Link
               href="/courts"
-              className="bg-terracotta hover:bg-terracotta-dark text-white text-sm font-semibold px-5 py-2.5 rounded-md transition-colors duration-200"
+              className="bg-red-600 hover:bg-red-700 text-white text-sm font-semibold px-5 py-2.5 rounded-md transition-colors duration-200"
             >
               Book a Court
             </Link>
@@ -115,7 +115,7 @@ export default function Navbar() {
               <Link
                 href="/courts"
                 onClick={() => setMenuOpen(false)}
-                className="bg-terracotta hover:bg-terracotta-dark text-white text-sm font-semibold px-5 py-3 rounded-md text-center transition-colors duration-200"
+                className="bg-red-600 hover:bg-red-700 text-white text-sm font-semibold px-5 py-3 rounded-md text-center transition-colors duration-200"
               >
                 Book a Court
               </Link>

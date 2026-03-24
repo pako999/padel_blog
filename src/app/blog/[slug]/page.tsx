@@ -5,6 +5,7 @@ import Link from 'next/link';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import BlogCard from '@/components/BlogCard';
+import ReadingProgressBar from '@/components/ReadingProgressBar';
 import postsData from '../../../../data/posts.json';
 import type { Post } from '@/types';
 
@@ -65,6 +66,7 @@ export default async function BlogPostPage({ params }: PageProps) {
 
   return (
     <>
+      <ReadingProgressBar />
       <Navbar />
       <main>
         {/* Hero */}

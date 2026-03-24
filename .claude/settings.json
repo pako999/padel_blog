@@ -1,0 +1,15 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:www.monteros.com)",
+      "WebFetch(domain:suntennistravel.com)",
+      "WebFetch(domain:api.unsplash.com)",
+      "WebFetch(domain:www.kimptonlosmonterosmarbella.com)",
+      "WebFetch(domain:www.villapadierna.es)",
+      "WebFetch(domain:www.drumelia.com)",
+      "WebFetch(domain:noembed.com)",
+      "WebFetch(domain:www.pexels.com)",
+      "WebFetch(domain:images.unsplash.com)"
+    ]
+  }
+}

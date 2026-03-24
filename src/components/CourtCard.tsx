@@ -72,6 +72,17 @@ export default function CourtCard({ court }: CourtCardProps) {
           {court.description}
         </p>
 
+        {/* Rating */}
+        {court.rating && (
+          <div className="flex items-center gap-1.5 mb-3 text-sm">
+            <span className="text-yellow-500 text-base">★</span>
+            <span className="font-semibold text-navy">{court.rating}</span>
+            {court.reviewCount && (
+              <span className="text-navy/40 text-xs">({court.reviewCount})</span>
+            )}
+          </div>
+        )}
+
         {/* Footer */}
         <Link
           href={`/courts/${court.slug}`}
