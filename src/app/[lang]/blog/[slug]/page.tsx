@@ -5,6 +5,7 @@
 
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
+import LangSwitcher from '@/components/LangSwitcher';
 import Image from 'next/image';
 import type { Metadata } from 'next';
 import { MDXRemote } from 'next-mdx-remote/rsc';
@@ -218,17 +219,7 @@ export default async function BlogPostPage({
             <Link href={`/${lang}/clubs`} className="nav-link">{ui.clubs}</Link>
             <Link href={`/${lang}/blog`} className="nav-link">{ui.blog}</Link>
           </div>
-          <div className="lang-pills" aria-label="Language switcher">
-            {SUPPORTED_LANGS.map(l => (
-              <Link
-                key={l}
-                href={`/${l}/blog/${slug}`}
-                className={`lang-pill${l === lang ? ' active' : ''}`}
-              >
-                {l.toUpperCase()}
-              </Link>
-            ))}
-          </div>
+          <LangSwitcher currentLang={lang} urlTemplate={`/[lang]/blog/${slug}`} />
         </div>
       </nav>
 

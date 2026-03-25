@@ -7,6 +7,7 @@ import Link from 'next/link';
 import type { Metadata } from 'next';
 import { getFeaturedPosts, SUPPORTED_LANGS, type Lang } from '@/lib/blog';
 import { notFound } from 'next/navigation';
+import LangSwitcher from '@/components/LangSwitcher';
 
 const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://marbellapadel.com';
 
@@ -484,18 +485,7 @@ export default async function HomePage({
               {meta.navBlog}
             </Link>
           </div>
-          <div className="lang-pills" aria-label="Language switcher">
-            {SUPPORTED_LANGS.map(l => (
-              <Link
-                key={l}
-                href={`/${l}`}
-                className={`lang-pill${l === lang ? ' active' : ''}`}
-                aria-label={l.toUpperCase()}
-              >
-                {l.toUpperCase()}
-              </Link>
-            ))}
-          </div>
+          <LangSwitcher currentLang={lang} urlTemplate="/[lang]" />
         </div>
       </nav>
 

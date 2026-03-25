@@ -166,14 +166,96 @@ body {
   color: var(--color-ink);
 }
 
+/* Language selector — globe button + dropdown */
+.lang-switcher {
+  position: relative;
+  flex-shrink: 0;
+}
+
+.lang-switcher-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.3rem 0.6rem;
+  border-radius: 0.25rem;
+  border: 1px solid rgba(26, 26, 24, 0.15);
+  background: transparent;
+  cursor: pointer;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--color-ink);
+  transition: background 0.15s, border-color 0.15s;
+  white-space: nowrap;
+}
+
+.lang-switcher-btn:hover {
+  background: rgba(26, 26, 24, 0.06);
+  border-color: rgba(26, 26, 24, 0.3);
+}
+
+.lang-switcher-icon {
+  font-size: 1rem;
+  line-height: 1;
+}
+
+.lang-switcher-arrow {
+  font-size: 0.6rem;
+  opacity: 0.6;
+  transition: transform 0.2s;
+}
+
+.lang-switcher.open .lang-switcher-arrow {
+  transform: rotate(180deg);
+}
+
+.lang-dropdown {
+  display: none;
+  position: absolute;
+  top: calc(100% + 6px);
+  right: 0;
+  background: #fff;
+  border: 1px solid rgba(26, 26, 24, 0.12);
+  border-radius: 0.4rem;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+  min-width: 140px;
+  z-index: 200;
+  overflow: hidden;
+}
+
+.lang-switcher.open .lang-dropdown {
+  display: block;
+}
+
+.lang-dropdown-item {
+  display: block;
+  padding: 0.45rem 0.9rem;
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: var(--color-ink);
+  text-decoration: none;
+  transition: background 0.1s;
+  white-space: nowrap;
+}
+
+.lang-dropdown-item:hover {
+  background: rgba(26, 26, 24, 0.05);
+}
+
+.lang-dropdown-item.active {
+  background: var(--color-terracotta);
+  color: #fff;
+  font-weight: 700;
+}
+
+/* Legacy pill styles — kept for fallback */
 .lang-pills {
   display: flex;
   gap: 0.25rem;
-  flex-wrap: wrap;
   align-items: center;
+  flex-wrap: nowrap;
   overflow-x: auto;
-  max-width: 340px;
   scrollbar-width: none;
+  max-width: 260px;
 }
 .lang-pills::-webkit-scrollbar {
   display: none;
@@ -187,6 +269,7 @@ body {
   text-decoration: none;
   color: var(--color-muted);
   transition: background 0.15s, color 0.15s;
+  flex-shrink: 0;
 }
 
 .lang-pill:hover {

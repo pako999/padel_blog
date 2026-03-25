@@ -8,6 +8,7 @@
  */
 
 import Link from 'next/link';
+import LangSwitcher from '@/components/LangSwitcher';
 import type { Metadata } from 'next';
 import { getAllClubs } from '@/lib/clubs';
 import { SUPPORTED_LANGS, type Lang } from '@/lib/blog';
@@ -222,18 +223,7 @@ export default async function ClubsPage({
               {meta.navBlog}
             </Link>
           </div>
-          <div className="lang-pills" aria-label="Language switcher">
-            {SUPPORTED_LANGS.map(l => (
-              <Link
-                key={l}
-                href={`/${l}/clubs`}
-                className={`lang-pill${l === lang ? ' active' : ''}`}
-                aria-label={l.toUpperCase()}
-              >
-                {l.toUpperCase()}
-              </Link>
-            ))}
-          </div>
+          <LangSwitcher currentLang={lang} urlTemplate="/[lang]/clubs" />
         </div>
       </nav>
 

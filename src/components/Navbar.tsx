@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { AnimatePresence, motion } from 'framer-motion';
+import LangSwitcher from '@/components/LangSwitcher';
 
 const navLinks = [
   { href: '/', label: 'Home' },
@@ -60,6 +61,7 @@ export default function Navbar() {
             >
               Book a Court
             </Link>
+            <LangSwitcher currentLang="en" urlTemplate="/[lang]" />
           </nav>
 
           {/* Mobile hamburger */}
@@ -119,6 +121,7 @@ export default function Navbar() {
               >
                 Book a Court
               </Link>
+              <LangSwitcher currentLang="en" urlTemplate="/[lang]" />
             </div>
           </motion.div>
         )}

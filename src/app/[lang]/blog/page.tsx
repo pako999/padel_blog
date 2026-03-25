@@ -4,6 +4,7 @@
  */
 
 import Link from 'next/link';
+import LangSwitcher from '@/components/LangSwitcher';
 import Image from 'next/image';
 import type { Metadata } from 'next';
 import { getAllPosts, SUPPORTED_LANGS, type Lang } from '@/lib/blog';
@@ -215,17 +216,7 @@ export default async function BlogIndexPage({
             <Link href={`/${lang}/clubs`} className="nav-link">{meta.navClubs}</Link>
             <Link href={`/${lang}/blog`} className="nav-link">{meta.navBlog}</Link>
           </div>
-          <div className="lang-pills" aria-label="Language switcher">
-            {SUPPORTED_LANGS.map(l => (
-              <Link
-                key={l}
-                href={`/${l}/blog`}
-                className={`lang-pill${l === lang ? ' active' : ''}`}
-              >
-                {l.toUpperCase()}
-              </Link>
-            ))}
-          </div>
+          <LangSwitcher currentLang={lang} urlTemplate="/[lang]/blog" />
         </div>
       </nav>
 
