@@ -14,7 +14,7 @@
     "lng": -4.9842,
     "address": "Av. de Barcelona, 8, 29670 San Pedro Alcántara, Málaga",
     "hours": "Daily 08:00–23:00",
-    "description": "Voted World's Best Padel Club in both 2024 and 2025, NAC Nueva Alcántara is the benchmark for padel excellence on the Costa del Sol. All 16 panoramic glass-walled courts are built to World Padel Tour standards, surrounded by lush gardens and mountain views. The club offers a fine dining restaurant, physiotherapy centre, fully-stocked pro shop, and one of the most active tournament calendars on the coast.",
+    "description": "One of the most acclaimed padel clubs on the Costa del Sol, NAC Nueva Alcántara is the benchmark for padel excellence in Marbella. All 16 panoramic glass-walled courts are built to professional competition standards, surrounded by lush gardens and mountain views. The club offers a fine dining restaurant, physiotherapy centre, fully-stocked pro shop, and one of the most active tournament calendars on the coast.",
     "amenities": ["Parking", "Showers", "Restaurant", "Bar", "Pro Shop", "Racket Rental", "Physiotherapy", "Wi-Fi", "Swimming Pool", "Coaching"],
     "website": "https://nuevaalcantaraclub.com",
     "bookingUrl": "https://playtomic.io",
@@ -62,7 +62,7 @@
     "lng": -4.9491,
     "address": "Carretera de Istán, km 2, 29602 Marbella, Málaga",
     "hours": "Mon–Sat 09:00–22:00, Sun 09:00–17:00",
-    "description": "Founded in 1997 by Spain's tennis legend Manolo Santana, this prestigious club in Nueva Andalucía's Golf Valley offers 4 padel courts alongside 6 tennis courts. Regular clinics from WPT-certified coaches, a vibrant restaurant and bar, outdoor swimming pool, and an international member community make this one of the most social clubs on the coast.",
+    "description": "Founded in 1997 by Spain's tennis legend Manolo Santana, this prestigious club in Nueva Andalucía's Golf Valley offers 4 padel courts alongside 6 tennis courts. Regular clinics from certified coaches, a vibrant restaurant and bar, outdoor swimming pool, and an international member community make this one of the most social clubs on the coast.",
     "amenities": ["Parking", "Showers", "Restaurant", "Bar", "Pro Shop", "Racket Rental", "Swimming Pool", "Wi-Fi", "Coaching"],
     "website": "https://www.manolosantana.es",
     "bookingUrl": "https://playtomic.com/clubs/manolo-santana-racquets-club-marbella/embed",
@@ -171,25 +171,25 @@
     "slug": "rafa-nadal-tennis-center-marbella",
     "name": "Rafa Nadal Tennis Center Marbella",
     "area": "Marbella Este",
-    "courts": 6,
+    "courts": 2,
     "indoor": false,
     "outdoor": true,
     "priceFrom": 20,
     "priceTo": 35,
-    "surface": "Clay / Hard",
+    "surface": "Artificial Grass",
     "phone": "+34 952 76 88 00",
     "lat": 36.4910,
     "lng": -4.7730,
     "address": "Av. Zurita, s/n, 29604 Marbella, Málaga",
     "hours": "Daily 09:00–21:00",
-    "description": "The Marbella outpost of Rafa Nadal's global academy network, bringing world-class coaching methodology to the Costa del Sol. The centre offers high-performance training camps and individual lessons on premium clay and hard courts, with racket sports including padel. A must-visit for serious players who want to train in the Nadal Academy tradition.",
+    "description": "The Marbella outpost of Rafa Nadal's global academy network, located at the Don Carlos Resort. Primarily a tennis centre with 7 clay courts, it also offers 2 padel courts with ocean views. High-performance training camps and individual lessons are available. A must-visit for serious players who want to train in the Nadal Academy tradition.",
     "amenities": ["Parking", "Showers", "Pro Shop", "Racket Rental", "Gym", "Coaching"],
-    "website": "https://international.rafanadalacademy.com/marbella/",
+    "website": "https://doncarlosresort.com/en/rafa-nadal-tennis-center/",
     "bookingUrl": "https://playtomic.io",
-    "featured": true,
+    "featured": false,
     "rating": 4.8,
     "reviewCount": 51,
-    "image": "https://images.unsplash.com/photo-1622279457486-62dcc4a431d6?w=800&q=80&auto=format&fit=crop"
+    "image": "https://images.unsplash.com/photo-1646649853703-7645147474ba?w=800&q=80&auto=format&fit=crop"
   },
   {
     "slug": "los-naranjos-padel",
@@ -206,18 +206,20 @@
     "lng": -4.9550,
     "address": "Av. Valle Inclán, 41, 29660 Nueva Andalucía, Marbella",
     "hours": "Daily 07:30–22:30",
-    "description": "The largest padel club in Andalusia, just five minutes from Puerto Banús marina. Los Naranjos boasts 18 courts across indoor and outdoor settings — including one World Padel Tour competition court, four fully covered indoor courts, and a dedicated solo practice facility. With a professional coaching academy and pickleball courts added in 2024, this is the most comprehensive padel destination on the Costa del Sol.",
+    "description": "One of the largest padel clubs in Europe, just five minutes from Puerto Banús marina. Los Naranjos boasts 18 courts across indoor and outdoor settings — including one competition court, four fully covered indoor courts, and a dedicated solo practice facility. With a professional coaching academy and pickleball courts, this is the most comprehensive padel destination on the Costa del Sol.",
     "amenities": ["Parking", "Showers", "Bar", "Pro Shop", "Racket Rental", "Physiotherapy", "Coaching"],
     "website": "https://losnaranjospadel.com",
     "bookingUrl": "https://playtomic.io",
     "featured": false,
-    "image": "https://images.unsplash.com/photo-1554068865-24cecd4e34b8?w=800&q=80&auto=format&fit=crop"
+    "rating": 4.5,
+    "reviewCount": 48,
+    "image": "https://images.unsplash.com/photo-1646651105426-e8c8ee9badde?w=800&q=80&auto=format&fit=crop"
   },
   {
     "slug": "villa-padierna-padel",
     "name": "Villa Padierna Racquet Club",
     "area": "Estepona",
-    "courts": 15,
+    "courts": 11,
     "indoor": false,
     "outdoor": true,
     "priceFrom": 22,
@@ -228,12 +230,12 @@
     "lng": -5.0420,
     "address": "Calle Adriano, Urb. Costalita, 29688 Estepona, Málaga",
     "hours": "Mon–Sat 10:00–23:00, Sun 10:00–15:00",
-    "description": "The most luxurious padel experience on the Costa del Sol. Fifteen courts spread across three areas within the grounds of the five-star Villa Padierna Palace hotel. Five-star service extends to every aspect of play — private coaching, bespoke racket fitting, and post-match spa treatments are all on offer.",
+    "description": "A luxurious padel experience on the Costa del Sol. Eleven courts located 50 metres from the beach, within the grounds of the five-star Villa Padierna Palace hotel. Five-star service extends to every aspect of play — private coaching, bespoke racket fitting, and post-match spa treatments are all on offer.",
     "amenities": ["Parking", "Showers", "Restaurant", "Bar", "Pro Shop", "Racket Rental", "Physiotherapy", "Gym", "Swimming Pool", "Spa", "Coaching"],
     "website": "https://www.villapadierna.es/en/padel/",
     "bookingUrl": "https://playtomic.io",
     "featured": false,
-    "image": "https://images.unsplash.com/photo-1602211844066-d3bb556e983b?w=800&q=80&auto=format&fit=crop"
+    "image": "https://images.unsplash.com/photo-1646649851800-48dba35edc76?w=800&q=80&auto=format&fit=crop"
   },
   {
     "slug": "real-club-padel-marbella",
@@ -255,7 +257,7 @@
     "website": "https://realclubpadelmarbella.com",
     "bookingUrl": "https://playtomic.io",
     "featured": true,
-    "image": "https://images.unsplash.com/photo-1560012057-4372e14c5085?w=800&q=80&auto=format&fit=crop"
+    "image": "https://images.unsplash.com/photo-1646649853517-e2f75cde1908?w=800&q=80&auto=format&fit=crop"
   },
   {
     "slug": "los-monteros-racket-club",
@@ -277,6 +279,6 @@
     "website": "https://www.monteros.com/en/racket/",
     "bookingUrl": "https://playtomic.io",
     "featured": false,
-    "image": "https://images.unsplash.com/photo-1595435934249-5df7ed86e1c0?w=800&q=80&auto=format&fit=crop"
+    "image": "https://images.unsplash.com/photo-1646649851780-d9701b7c3c04?w=800&q=80&auto=format&fit=crop"
   }
 ]
