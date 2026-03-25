@@ -10,6 +10,30 @@
       "internal": true,
       "statusCode": 308,
       "regex": "^(?:/((?:[^/]+?)(?:/(?:[^/]+?))*))/$"
+    },
+    {
+      "source": "/blog",
+      "destination": "/en/blog",
+      "statusCode": 308,
+      "regex": "^(?!/_next)/blog(?:/)?$"
+    },
+    {
+      "source": "/blog/:slug",
+      "destination": "/en/blog/:slug",
+      "statusCode": 308,
+      "regex": "^(?!/_next)/blog(?:/([^/]+?))(?:/)?$"
+    },
+    {
+      "source": "/courts",
+      "destination": "/en/clubs",
+      "statusCode": 308,
+      "regex": "^(?!/_next)/courts(?:/)?$"
+    },
+    {
+      "source": "/courts/:slug",
+      "destination": "/en/clubs/:slug",
+      "statusCode": 308,
+      "regex": "^(?!/_next)/courts(?:/([^/]+?))(?:/)?$"
     }
   ],
   "headers": [
@@ -30,22 +54,6 @@
     "fallback": []
   },
   "dynamicRoutes": [
-    {
-      "page": "/blog/[slug]",
-      "regex": "^/blog/([^/]+?)(?:/)?$",
-      "routeKeys": {
-        "nxtPslug": "nxtPslug"
-      },
-      "namedRegex": "^/blog/(?<nxtPslug>[^/]+?)(?:/)?$"
-    },
-    {
-      "page": "/courts/[slug]",
-      "regex": "^/courts/([^/]+?)(?:/)?$",
-      "routeKeys": {
-        "nxtPslug": "nxtPslug"
-      },
-      "namedRegex": "^/courts/(?<nxtPslug>[^/]+?)(?:/)?$"
-    },
     {
       "page": "/[lang]",
       "regex": "^/([^/]+?)(?:/)?$",
@@ -107,18 +115,6 @@
       "regex": "^/advertise(?:/)?$",
       "routeKeys": {},
       "namedRegex": "^/advertise(?:/)?$"
-    },
-    {
-      "page": "/blog",
-      "regex": "^/blog(?:/)?$",
-      "routeKeys": {},
-      "namedRegex": "^/blog(?:/)?$"
-    },
-    {
-      "page": "/courts",
-      "regex": "^/courts(?:/)?$",
-      "routeKeys": {},
-      "namedRegex": "^/courts(?:/)?$"
     },
     {
       "page": "/robots.txt",

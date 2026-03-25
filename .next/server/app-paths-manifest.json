@@ -2,15 +2,11 @@
   "/_not-found/page": "app/_not-found/page.js",
   "/robots.txt/route": "app/robots.txt/route.js",
   "/sitemap.xml/route": "app/sitemap.xml/route.js",
-  "/advertise/page": "app/advertise/page.js",
-  "/courts/page": "app/courts/page.js",
-  "/blog/page": "app/blog/page.js",
-  "/blog/[slug]/page": "app/blog/[slug]/page.js",
-  "/page": "app/page.js",
-  "/[lang]/blog/page": "app/[lang]/blog/page.js",
   "/[lang]/clubs/[slug]/page": "app/[lang]/clubs/[slug]/page.js",
+  "/[lang]/blog/page": "app/[lang]/blog/page.js",
   "/[lang]/blog/[slug]/page": "app/[lang]/blog/[slug]/page.js",
+  "/advertise/page": "app/advertise/page.js",
+  "/page": "app/page.js",
   "/[lang]/clubs/page": "app/[lang]/clubs/page.js",
-  "/[lang]/page": "app/[lang]/page.js",
-  "/courts/[slug]/page": "app/courts/[slug]/page.js"
+  "/[lang]/page": "app/[lang]/page.js"
 }

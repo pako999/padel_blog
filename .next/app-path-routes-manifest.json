@@ -2,15 +2,11 @@
   "/_not-found/page": "/_not-found",
   "/robots.txt/route": "/robots.txt",
   "/sitemap.xml/route": "/sitemap.xml",
-  "/advertise/page": "/advertise",
-  "/courts/page": "/courts",
-  "/blog/page": "/blog",
-  "/blog/[slug]/page": "/blog/[slug]",
-  "/page": "/",
-  "/[lang]/blog/page": "/[lang]/blog",
   "/[lang]/clubs/[slug]/page": "/[lang]/clubs/[slug]",
+  "/[lang]/blog/page": "/[lang]/blog",
   "/[lang]/blog/[slug]/page": "/[lang]/blog/[slug]",
+  "/advertise/page": "/advertise",
+  "/page": "/",
   "/[lang]/clubs/page": "/[lang]/clubs",
-  "/[lang]/page": "/[lang]",
-  "/courts/[slug]/page": "/courts/[slug]"
+  "/[lang]/page": "/[lang]"
 }

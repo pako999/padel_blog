@@ -321,7 +321,29 @@
     "configFileName": "next.config.mjs",
     "turbopack": {
       "root": "/Users/patrik/padelblog_marbella/padel_blog"
-    }
+    },
+    "_originalRedirects": [
+      {
+        "source": "/blog",
+        "destination": "/en/blog",
+        "permanent": true
+      },
+      {
+        "source": "/blog/:slug",
+        "destination": "/en/blog/:slug",
+        "permanent": true
+      },
+      {
+        "source": "/courts",
+        "destination": "/en/clubs",
+        "permanent": true
+      },
+      {
+        "source": "/courts/:slug",
+        "destination": "/en/clubs/:slug",
+        "permanent": true
+      }
+    ]
   },
   "appDir": "/Users/patrik/padelblog_marbella/padel_blog",
   "relativeAppDir": "",

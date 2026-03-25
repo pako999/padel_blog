@@ -1,5 +1,9 @@
 User-Agent: *
 Allow: /
+Disallow: /blog
+Disallow: /blog/
+Disallow: /courts
+Disallow: /courts/
 
 Host: https://padel-blog.vercel.app
 Sitemap: https://padel-blog.vercel.app/sitemap.xml
