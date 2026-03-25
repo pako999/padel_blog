@@ -4,6 +4,7 @@
  */
 
 import Link from 'next/link';
+import Image from 'next/image';
 import type { Metadata } from 'next';
 import { getFeaturedPosts, SUPPORTED_LANGS, type Lang } from '@/lib/blog';
 import { notFound } from 'next/navigation';
@@ -492,29 +493,16 @@ export default async function HomePage({
       <main>
         {/* ── Hero ── */}
         <section className="hero">
-          {/* Decorative SVG padel court lines */}
-          <div className="court-lines-bg" aria-hidden="true">
-            <svg
-              viewBox="0 0 400 600"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-              width="100%"
-              height="100%"
-              preserveAspectRatio="xMidYMid meet"
-            >
-              {/* Outer court rectangle */}
-              <rect x="40" y="40" width="320" height="520" stroke="#1A1A18" strokeWidth="6" />
-              {/* Center line */}
-              <line x1="40" y1="300" x2="360" y2="300" stroke="#1A1A18" strokeWidth="4" />
-              {/* Service box left */}
-              <line x1="200" y1="40" x2="200" y2="560" stroke="#1A1A18" strokeWidth="3" />
-              {/* Service box top left */}
-              <line x1="40" y1="170" x2="360" y2="170" stroke="#1A1A18" strokeWidth="2" />
-              {/* Service box top right */}
-              <line x1="40" y1="430" x2="360" y2="430" stroke="#1A1A18" strokeWidth="2" />
-              {/* Net */}
-              <line x1="40" y1="300" x2="360" y2="300" stroke="#1A1A18" strokeWidth="8" />
-            </svg>
+          {/* Real padel court background photo */}
+          <div className="hero-bg" aria-hidden="true">
+            <Image
+              src="https://images.unsplash.com/photo-1646649852033-7e0f3d679f8b?w=1600&q=80"
+              alt="Padel courts in Marbella"
+              fill
+              className="object-cover"
+              priority
+            />
+            <div className="hero-overlay" />
           </div>
 
           <div className="hero-inner">
