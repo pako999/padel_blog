@@ -141,6 +141,34 @@ const META: Record<Lang, MetaEntry> = {
     courtsLabel: 'baner',
     footerTagline: 'Den #1 flerspråklige padelguiden for Marbella',
   },
+  sl: {
+    title: 'Najboljši Padel Klubi v Marbelli — Vseh 9 ocenjenih',
+    description:
+      'Popoln vodič po vseh 9 padel klubih v Marbelli. Primerjajte igrišča, objekte, cene in možnosti rezervacije.',
+    h1: 'Padel Klubi v Marbelli',
+    subtitle:
+      'Vseh 9 klubov ocenjenih — od nagrajenih vrhunskih objektov do skritih lokalnih draguljev.',
+    navBlog: 'Blog',
+    navClubs: 'Klubi',
+    premiumLabel: '★ Izpostavljeni',
+    listedLabel: 'Na seznamu',
+    courtsLabel: 'igrišč',
+    footerTagline: 'Vodič #1 za padel v večih jezikih za Marbello',
+  },
+  hr: {
+    title: 'Najbolji Padel Klubovi u Marbelli — Svih 9 recenziranih',
+    description:
+      'Potpuni vodič za svih 9 padel klubova u Marbelli. Usporedite terene, sadržaje, cijene i mogućnosti rezervacije.',
+    h1: 'Padel Klubovi u Marbelli',
+    subtitle:
+      'Svih 9 klubova recenzirano — od nagrađenih vrhunskih objekata do skrivenih lokalnih dragulja.',
+    navBlog: 'Blog',
+    navClubs: 'Klubovi',
+    premiumLabel: '★ Istaknuti',
+    listedLabel: 'Popisani',
+    courtsLabel: 'terena',
+    footerTagline: 'Vodič #1 za padel na više jezika za Marbello',
+  },
 };
 
 export async function generateStaticParams() {

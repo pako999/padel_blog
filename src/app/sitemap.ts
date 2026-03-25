@@ -3,7 +3,7 @@ import courtsData from '../../data/courts.json';
 import type { MetadataRoute } from 'next';
 
 const BASE = process.env.NEXT_PUBLIC_SITE_URL || 'https://padel-blog.vercel.app';
-const LANGS = ['en','de','sv','nl','fr','es','pl','no'];
+const LANGS = ['en','de','sv','nl','fr','es','pl','no','sl','hr'];
 const courts = courtsData as { slug: string }[];
 
 export default function sitemap(): MetadataRoute.Sitemap {

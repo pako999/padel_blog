@@ -101,6 +101,24 @@ const UI: Record<Lang, UiStrings> = {
     ctaBtn: 'List klubben din →',
     footerTagline: 'Den #1 flerspråklige padelguiden for Marbella',
   },
+  sl: {
+    blog: 'Blog',
+    clubs: 'Klubi',
+    backToBlog: '← Nazaj na vodič',
+    ctaTitle: 'Imate padel klub v Marbelli?',
+    ctaBody: 'Bodite predstavljeni v vodiču #1 za padel v Marbelli. Dosezite tisoče igralcev vsak mesec.',
+    ctaBtn: 'Dodajte vaš klub →',
+    footerTagline: 'Vodič #1 za padel v večih jezikih za Marbello',
+  },
+  hr: {
+    blog: 'Blog',
+    clubs: 'Klubovi',
+    backToBlog: '← Natrag na vodič',
+    ctaTitle: 'Imate padel klub u Marbelli?',
+    ctaBody: 'Budite predstavljeni u vodiču #1 za padel u Marbelli. Dosegnite tisuće igrača svaki mjesec.',
+    ctaBtn: 'Dodajte vaš klub →',
+    footerTagline: 'Vodič #1 za padel na više jezika za Marbello',
+  },
 };
 
 // ─── Static params ────────────────────────────────────────────────────────────

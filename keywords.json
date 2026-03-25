@@ -28,5 +28,9 @@
   { "id": 27, "keyword": "clases padel marbella principiantes", "lang": "es", "cluster": "educational", "priority": 2, "audience": "Spanish beginners", "status": "pending" },
   { "id": 28, "keyword": "padel marbella wakacje polska", "lang": "pl", "cluster": "travel", "priority": 1, "audience": "Polish tourists", "status": "pending" },
   { "id": 29, "keyword": "padel marbella ferie tips", "lang": "no", "cluster": "travel", "priority": 1, "audience": "Norwegian tourists", "status": "pending" },
-  { "id": 30, "keyword": "where to play padel marbella", "lang": "en", "cluster": "local-info", "priority": 1, "audience": "tourists", "status": "pending" }
+  { "id": 30, "keyword": "where to play padel marbella", "lang": "en", "cluster": "local-info", "priority": 1, "audience": "tourists", "status": "pending" },
+  { "id": 31, "keyword": "padel marbella pocetniki vodic", "lang": "sl", "cluster": "educational", "priority": 1, "audience": "Slovenian tourists", "status": "pending" },
+  { "id": 32, "keyword": "najboljsi padel klubi marbella", "lang": "sl", "cluster": "local-commercial", "priority": 1, "audience": "Slovenian tourists", "status": "pending" },
+  { "id": 33, "keyword": "padel marbella pocetnici vodic", "lang": "hr", "cluster": "educational", "priority": 1, "audience": "Croatian tourists", "status": "pending" },
+  { "id": 34, "keyword": "najbolji padel klubovi marbella", "lang": "hr", "cluster": "local-commercial", "priority": 1, "audience": "Croatian tourists", "status": "pending" }
 ]

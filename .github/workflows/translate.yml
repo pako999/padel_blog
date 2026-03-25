@@ -19,7 +19,7 @@ jobs:
 
     strategy:
       matrix:
-        lang: [de, sv, nl, fr, es, pl, no]
+        lang: [de, sv, nl, fr, es, pl, no, sl, hr]
       # Translate all languages in parallel
       fail-fast: false
 

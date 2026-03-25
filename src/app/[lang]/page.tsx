@@ -326,10 +326,82 @@ const META: Record<Lang, MetaEntry> = {
       'Skribentene våre bor og spiller i Marbella. Hver klubbanmeldelse er basert på egne erfaringer på banen.',
     why2Title: 'Flerspråklig',
     why2Body:
-      'Alt innhold på 8 språk — engelsk, tysk, svensk, nederlandsk, fransk, spansk, polsk og norsk.',
+      'Alt innhold på 10 språk — engelsk, tysk, svensk, nederlandsk, fransk, spansk, polsk, norsk, slovensk og kroatisk.',
     why3Title: 'Alltid oppdatert',
     why3Body:
       'Klubbdetaljer, priser og bestillingslenker verifiseres jevnlig slik at du alltid har nøyaktig informasjon.',
+  },
+  sl: {
+    title: 'Padel Marbella Vodič — Najboljši Klubi in Igrišča',
+    description:
+      'Vodič #1 v slovenščini za padel v Marbelli. Odkrijte najboljše klube, rezervirajte igrišča in preberite strokovne nasvete.',
+    h1: 'MarbellapadEL',
+    heroHeadline: 'Marbella.\nZibka padla\nv Evropi.',
+    heroCta1: 'Odkrijte klube',
+    heroCta2: 'Preberite vodnike',
+    clubsLabel: 'Najboljše ocenjeni',
+    clubsTitle: 'Izpostavljeni Padel Klubi',
+    clubsLink: 'Oglejte si vseh 9 klubov →',
+    postsLabel: 'Najnovejši vodniki',
+    postsTitle: 'Strokovni nasveti za padel',
+    postsLink: 'Prebrskajte vse članke →',
+    whyLabel: 'Zakaj mi',
+    whyTitle: 'Marbellska padel avtoriteta',
+    advertiseTitle: 'Ali vaš klub spada v ta vodič?',
+    advertiseBody:
+      'Dosezite tisoče padel igralcev iz vse Evrope, ki vsak mesec iščejo igrišča v Marbelli.',
+    advertiseCta: 'Pridružite se kot izpostavljeni partner →',
+    navBlog: 'Blog',
+    navClubs: 'Klubi',
+    statsPlayers: 'padel igralcev po svetu',
+    statsLanguages: 'jezikov',
+    statsArticles: 'strokovnih člankov',
+    statsClubs: 'ocenjenih klubov',
+    why1Title: 'Lokalna strokovnost',
+    why1Body:
+      'Naši avtorji živijo in igrajo v Marbelli. Vsaka ocena kluba temelji na osebnih izkušnjah na igrišču.',
+    why2Title: 'Večjezično',
+    why2Body:
+      'Vsa vsebina v 10 jezikih — angleščina, nemščina, švedščina, nizozemščina, francoščina, španščina, poljščina, norveščina, slovenščina in hrvaščina.',
+    why3Title: 'Vedno posodobljeno',
+    why3Body:
+      'Podatki o klubih, cene in povezave za rezervacije se redno preverjajo, tako da imate vedno natančne informacije.',
+  },
+  hr: {
+    title: 'Padel Marbella Vodič — Najbolji Klubovi i Tereni',
+    description:
+      'Vodič #1 na hrvatskom za padel u Marbelli. Otkrijte najbolje klubove, rezervirajte terene i čitajte stručne savjete.',
+    h1: 'MarbellapadEL',
+    heroHeadline: 'Marbella.\nColijevka padela\nu Europi.',
+    heroCta1: 'Istražite klubove',
+    heroCta2: 'Čitajte vodiče',
+    clubsLabel: 'Najbolje ocijenjeni',
+    clubsTitle: 'Istaknuti Padel Klubovi',
+    clubsLink: 'Pogledajte svih 9 klubova →',
+    postsLabel: 'Najnoviji vodiči',
+    postsTitle: 'Stručni savjeti za padel',
+    postsLink: 'Pregledajte sve članke →',
+    whyLabel: 'Zašto mi',
+    whyTitle: 'Marbellski padel autoritet',
+    advertiseTitle: 'Pripada li vaš klub ovom vodiču?',
+    advertiseBody:
+      'Dosegnite tisuće padel igrača iz cijele Europe koji svaki mjesec traže terene u Marbelli.',
+    advertiseCta: 'Pridružite se kao istaknuti partner →',
+    navBlog: 'Blog',
+    navClubs: 'Klubovi',
+    statsPlayers: 'padel igrača globalno',
+    statsLanguages: 'jezika',
+    statsArticles: 'stručnih članaka',
+    statsClubs: 'ocijenjenih klubova',
+    why1Title: 'Lokalna stručnost',
+    why1Body:
+      'Naši autori žive i igraju u Marbelli. Svaka recenzija kluba temelji se na osobnom iskustvu na terenu.',
+    why2Title: 'Višejezično',
+    why2Body:
+      'Sav sadržaj na 10 jezika — engleski, njemački, švedski, nizozemski, francuski, španjolski, poljski, norveški, slovenski i hrvatski.',
+    why3Title: 'Uvijek ažurirano',
+    why3Body:
+      'Podaci o klubovima, cijene i veze za rezervacije redovito se provjeravaju kako biste uvijek imali točne informacije.',
   },
 };
 
@@ -477,7 +549,7 @@ export default async function HomePage({
                 <span className="stat-label">{meta.statsPlayers}</span>
               </div>
               <div className="stat-item">
-                <span className="stat-number">8</span>
+                <span className="stat-number">10</span>
                 <span className="stat-label">{meta.statsLanguages}</span>
               </div>
               <div className="stat-item">

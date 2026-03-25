@@ -51,6 +51,8 @@ const LANG_CONFIG = {
   es: { name: 'Spanish', locale: 'es_ES' },
   pl: { name: 'Polish', locale: 'pl_PL' },
   no: { name: 'Norwegian', locale: 'nb_NO' },
+  sl: { name: 'Slovenian', locale: 'sl_SI' },
+  hr: { name: 'Croatian', locale: 'hr_HR' },
 };
 
 // ─── Build prompt ─────────────────────────────────────────────────────────────

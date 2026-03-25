@@ -29,6 +29,8 @@ const LANG_META = {
   es: { name: 'Spanish', searchEngineNote: 'Spanish padel players from outside Andalusia visiting Marbella', culturalNote: 'Spain is the birthplace of padel in Europe. Write with authority and local pride.' },
   pl: { name: 'Polish', searchEngineNote: 'Polish tourists discovering padel in Marbella', culturalNote: 'Poland is a growing padel market. Many Polish tourists visit Marbella.' },
   no: { name: 'Norwegian', searchEngineNote: 'Norwegian padel enthusiasts vacationing in Marbella', culturalNote: 'Norway has a fast-growing padel scene. Norwegians frequently holiday in southern Spain.' },
+  sl: { name: 'Slovenian', searchEngineNote: 'Slovenian padel players and tourists visiting Marbella', culturalNote: 'Slovenia has a growing padel scene. Slovenians are keen sun-seekers in southern Spain. Use natural, fluent Slovenian — terms: igrišče (court), turnir (tournament), klub (club).' },
+  hr: { name: 'Croatian', searchEngineNote: 'Croatian padel enthusiasts and tourists visiting Marbella', culturalNote: 'Croatia has a rapidly growing padel scene. Many Croatians holiday in Spain. Use natural, fluent Croatian — terms: teren (court), turnir (tournament), klub (club).' },
 };
 
 function buildTranslationPrompt(content, targetLang) {
@@ -73,7 +75,7 @@ async function translatePost(content, targetLang) {
       'anthropic-version': '2023-06-01',
     },
     body: JSON.stringify({
-      model: 'claude-sonnet-4-20250514',
+      model: 'claude-sonnet-4-6',
       max_tokens: 4500,
       messages: [{ role: 'user', content: prompt }],
     }),

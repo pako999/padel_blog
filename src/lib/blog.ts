@@ -9,7 +9,7 @@ import matter from 'gray-matter';
 
 const CONTENT_DIR = path.join(process.cwd(), 'src', 'content', 'blog');
 
-export const SUPPORTED_LANGS = ['en', 'de', 'sv', 'nl', 'fr', 'es', 'pl', 'no'] as const;
+export const SUPPORTED_LANGS = ['en', 'de', 'sv', 'nl', 'fr', 'es', 'pl', 'no', 'sl', 'hr'] as const;
 export type Lang = typeof SUPPORTED_LANGS[number];
 
 export interface PostMeta {
