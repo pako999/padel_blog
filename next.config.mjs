@@ -15,6 +15,15 @@ const nextConfig = {
     ],
   },
 
+  async redirects() {
+    return [
+      { source: '/blog', destination: '/en/blog', permanent: true },
+      { source: '/blog/:slug', destination: '/en/blog/:slug', permanent: true },
+      { source: '/courts', destination: '/en/clubs', permanent: true },
+      { source: '/courts/:slug', destination: '/en/clubs/:slug', permanent: true },
+    ];
+  },
+
   async headers() {
     return [
       {

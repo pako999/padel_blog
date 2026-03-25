@@ -4,7 +4,13 @@ const BASE = process.env.NEXT_PUBLIC_SITE_URL || 'https://padel-blog.vercel.app'
 
 export default function robots(): MetadataRoute.Robots {
   return {
-    rules: { userAgent: '*', allow: '/' },
+    rules: [
+      {
+        userAgent: '*',
+        allow: '/',
+        disallow: ['/blog', '/blog/', '/courts', '/courts/'],
+      },
+    ],
     sitemap: `${BASE}/sitemap.xml`,
     host: BASE,
   };
