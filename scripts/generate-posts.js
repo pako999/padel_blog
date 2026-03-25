@@ -90,6 +90,8 @@ SEO RULES:
 - Do NOT keyword stuff
 - Write like a knowledgeable local, not a robot
 - Include specific club names, addresses, prices where relevant (use realistic Marbella data)
+- Use "Premier Padel" (not "World Padel Tour" which is outdated branding)
+- Only mention real, verifiable clubs, coaches, and products — never invent names
 
 OUTPUT FORMAT — return ONLY valid MDX, nothing else before or after:
 
@@ -123,7 +125,7 @@ schema: |
 
 // ─── Fetch cover image from Unsplash ─────────────────────────────────────────
 
-const FALLBACK_IMAGE = 'https://images.unsplash.com/photo-1554068865-24cecd4e34b8?w=1200&q=80&auto=format&fit=crop';
+const FALLBACK_IMAGE = 'https://images.unsplash.com/photo-1646649852033-7e0f3d679f8b?w=1200&q=80&auto=format&fit=crop';
 
 async function fetchCoverImage(keyword) {
   const key = process.env.UNSPLASH_ACCESS_KEY;
