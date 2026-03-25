@@ -130,7 +130,7 @@ body {
 .nav-inner {
   max-width: 1200px;
   margin: 0 auto;
-  height: 64px;
+  min-height: 64px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -171,6 +171,12 @@ body {
   gap: 0.25rem;
   flex-wrap: wrap;
   align-items: center;
+  overflow-x: auto;
+  max-width: 340px;
+  scrollbar-width: none;
+}
+.lang-pills::-webkit-scrollbar {
+  display: none;
 }
 
 .lang-pill {
