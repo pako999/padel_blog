@@ -182,13 +182,19 @@ export async function generateMetadata({
   const { lang } = await params;
   if (!SUPPORTED_LANGS.includes(lang)) return {};
   const meta = META[lang];
+  const posts = getAllPosts(lang);
+  
   return {
     title: meta.title,
     description: meta.description,
     alternates: {
       canonical: `${BASE_URL}/${lang}/blog`,
-      languages: Object.fromEntries(SUPPORTED_LANGS.map(l => [l, `${BASE_URL}/${l}/blog`])),
+      languages: {
+        ...Object.fromEntries(SUPPORTED_LANGS.map(l => [l, `${BASE_URL}/${l}/blog`])),
+        'x-default': `${BASE_URL}/en/blog`,
+      },
     },
+    ...(posts.length === 0 && { robots: { index: false, follow: true } }),
   };
 }
 
@@ -291,7 +297,7 @@ export default async function BlogIndexPage({
           <p className="section-label">Marbella</p>
           <h2 className="section-title">{meta.advertiseTitle}</h2>
           <p>{meta.advertiseBody}</p>
-          <Link href="/advertise" className="btn-primary">
+          <Link href={`/${lang}/advertise`} className="btn-primary">
             {meta.advertiseCta}
           </Link>
         </section>
@@ -310,7 +316,7 @@ export default async function BlogIndexPage({
           <nav className="footer-links" aria-label="Footer navigation">
             <Link href={`/${lang}/clubs`} className="footer-link">{meta.navClubs}</Link>
             <Link href={`/${lang}/blog`} className="footer-link">{meta.navBlog}</Link>
-            <Link href="/advertise" className="footer-link">Advertise</Link>
+            <Link href={`/${lang}/advertise`} className="footer-link">Advertise</Link>
             {SUPPORTED_LANGS.map(l => (
               <Link key={l} href={`/${l}/blog`} className="footer-link">
                 {l.toUpperCase()}

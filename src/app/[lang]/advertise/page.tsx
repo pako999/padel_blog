@@ -6,10 +6,28 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 
-export const metadata: Metadata = {
-  title: 'Advertise Your Padel Club | MarbellapadEL',
-  description: 'List your Marbella padel club on the #1 padel guide. Reach thousands of players and tourists searching for courts every month. Featured listings from €99/month.',
-};
+import { SUPPORTED_LANGS, type Lang } from '@/lib/blog';
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ lang: Lang }>;
+}): Promise<Metadata> {
+  const { lang } = await params;
+  const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://marbellapadel.com';
+  
+  return {
+    title: 'Advertise Your Padel Club | MarbellapadEL',
+    description: 'List your Marbella padel club on the #1 padel guide. Reach thousands of players and tourists searching for courts every month. Featured listings from €99/month.',
+    alternates: {
+      canonical: `${BASE_URL}/${lang}/advertise`,
+      languages: {
+        ...Object.fromEntries(SUPPORTED_LANGS.map((l) => [l, `${BASE_URL}/${l}/advertise`])),
+        'x-default': `${BASE_URL}/en/advertise`,
+      },
+    },
+  };
+}
 
 const TIERS = [
   {
@@ -59,7 +77,12 @@ const TIERS = [
   },
 ];
 
-export default function AdvertisePage() {
+export default async function AdvertisePage({
+  params,
+}: {
+  params: Promise<{ lang: Lang }>;
+}) {
+  const { lang } = await params;
   return (
     <main className="advertise-page">
       <section className="advertise-hero">

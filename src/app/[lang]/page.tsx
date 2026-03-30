@@ -715,7 +715,7 @@ export default async function HomePage({
             <Link href={`/${lang}/blog`} className="footer-link">
               {meta.navBlog}
             </Link>
-            <Link href="/advertise" className="footer-link">
+            <Link href={`/${lang}/advertise`} className="footer-link">
               Advertise
             </Link>
             {SUPPORTED_LANGS.map(l => (
