@@ -1,7 +1,7 @@
 import { getAllSlugsForSitemap } from '@/lib/blog';
 import type { MetadataRoute } from 'next';
 
-const BASE = process.env.NEXT_PUBLIC_SITE_URL || 'https://padel-blog.vercel.app';
+const BASE = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.padelmarbella.org';
 const LANGS = ['en','de','sv','nl','fr','es','pl','no','sl','hr'];
 
 export default function sitemap(): MetadataRoute.Sitemap {

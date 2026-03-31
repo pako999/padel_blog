@@ -1,6 +1,6 @@
 import type { MetadataRoute } from 'next';
 
-const BASE = process.env.NEXT_PUBLIC_SITE_URL || 'https://padel-blog.vercel.app';
+const BASE = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.padelmarbella.org';
 
 export default function robots(): MetadataRoute.Robots {
   return {
@@ -8,7 +8,7 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: '*',
         allow: '/',
-        disallow: ['/blog', '/blog/', '/courts', '/courts/'],
+        disallow: [],
       },
     ],
     sitemap: `${BASE}/sitemap.xml`,
