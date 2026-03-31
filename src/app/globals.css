@@ -1405,7 +1405,10 @@ body {
 .article-page {
   max-width: 720px;
   margin: 0 auto;
-  padding: 0 1.5rem 6rem;
+  padding: 5rem 1.5rem 6rem;
+}
+@media (min-width: 1024px) {
+  .article-page { padding-top: 6.5rem; }
 }
 
 .article-breadcrumb {
