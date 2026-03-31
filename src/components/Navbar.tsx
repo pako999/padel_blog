@@ -9,15 +9,17 @@ import LangSwitcher from '@/components/LangSwitcher';
 import type { Lang } from '@/lib/blog';
 
 interface NavbarProps {
-  lang: Lang;
-  labels: {
+  lang?: Lang;
+  labels?: {
     blog: string;
     clubs: string;
     advertise: string;
   };
 }
 
-export default function Navbar({ lang, labels }: NavbarProps) {
+const defaultLabels = { blog: 'Blog', clubs: 'Clubs', advertise: 'Advertise' };
+
+export default function Navbar({ lang = 'en', labels = defaultLabels }: NavbarProps) {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const pathname = usePathname();
