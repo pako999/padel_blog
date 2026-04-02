@@ -11,7 +11,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const mdxPosts = getAllSlugsForSitemap().map(({ lang, slug }) => ({
     url: `${BASE}/${lang}/blog/${slug}`,
     lastModified: now,
-    changeFrequency: 'daily' as const,
+    changeFrequency: 'weekly' as const,
     priority: 0.8,
   }));
 
@@ -21,6 +21,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${BASE}/${lang}/blog`, lastModified: now, changeFrequency: 'daily' as const, priority: 0.85 },
     { url: `${BASE}/${lang}/clubs`, lastModified: now, changeFrequency: 'weekly' as const, priority: 0.85 },
     { url: `${BASE}/${lang}/advertise`, lastModified: now, changeFrequency: 'monthly' as const, priority: 0.6 },
+    { url: `${BASE}/${lang}/terms`, lastModified: now, changeFrequency: 'yearly' as const, priority: 0.3 },
   ]);
 
   // Core pages

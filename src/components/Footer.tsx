@@ -82,6 +82,7 @@ export default function Footer({ lang = 'en', labels = defaultLabels }: FooterPr
           </p>
           <div className="flex items-center gap-6">
             <Link href={`/${lang}/privacy`} className="text-neutral-500 hover:text-white transition-colors text-xs">Privacy Policy</Link>
+            <Link href={`/${lang}/terms`} className="text-neutral-500 hover:text-white transition-colors text-xs">Terms of Service</Link>
             <Link href={`/${lang}/contact`} className="text-neutral-500 hover:text-white transition-colors text-xs">Contact</Link>
           </div>
         </div>

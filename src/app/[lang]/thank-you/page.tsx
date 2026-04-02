@@ -1,13 +1,119 @@
 import { SUPPORTED_LANGS, type Lang } from '@/lib/blog';
 import { Metadata } from 'next';
 import Link from 'next/link';
+import Navbar from '@/components/Navbar';
+import Footer from '@/components/Footer';
+
+interface MetaEntry {
+  title: string;
+  description: string;
+  navBlog: string;
+  navClubs: string;
+  navAdvertise: string;
+  footerTagline: string;
+  footerCopyright: string;
+}
+
+const META: Record<Lang, MetaEntry> = {
+  en: {
+    title: 'Thank You | MarbellapadEL',
+    description: 'Thanks for contacting us at MarbellapadEL.',
+    navBlog: 'Blog',
+    navClubs: 'Clubs',
+    navAdvertise: 'Advertise',
+    footerTagline: 'The #1 multilingual padel guide for Marbella. Discover best clubs, book courts, and expert tips.',
+    footerCopyright: `© ${new Date().getFullYear()} MarbellapadEL. All rights reserved.`,
+  },
+  de: {
+    title: 'Vielen Dank | MarbellapadEL',
+    description: 'Vielen Dank für Ihre Nachricht an MarbellapadEL.',
+    navBlog: 'Blog',
+    navClubs: 'Clubs',
+    navAdvertise: 'Werben',
+    footerTagline: 'Der #1 mehrsprachige Padel-Ratgeber für Marbella.',
+    footerCopyright: `© ${new Date().getFullYear()} MarbellapadEL. Alle Rechte vorbehalten.`,
+  },
+  sv: {
+    title: 'Tack | MarbellapadEL',
+    description: 'Tack för att du kontaktar oss på MarbellapadEL.',
+    navBlog: 'Blogg',
+    navClubs: 'Klubbar',
+    navAdvertise: 'Annonsera',
+    footerTagline: 'Den #1 flerspråkiga padelguiden för Marbella.',
+    footerCopyright: `© ${new Date().getFullYear()} MarbellapadEL. Alla rättigheter förbehållna.`,
+  },
+  nl: {
+    title: 'Bedankt | MarbellapadEL',
+    description: 'Bedankt voor uw bericht aan MarbellapadEL.',
+    navBlog: 'Blog',
+    navClubs: 'Clubs',
+    navAdvertise: 'Adverteren',
+    footerTagline: 'De #1 meertalige padelgids voor Marbella.',
+    footerCopyright: `© ${new Date().getFullYear()} MarbellapadEL. Alle rechten voorbehouden.`,
+  },
+  fr: {
+    title: 'Merci | MarbellapadEL',
+    description: 'Merci de nous avoir contactés chez MarbellapadEL.',
+    navBlog: 'Blog',
+    navClubs: 'Clubs',
+    navAdvertise: 'Publicité',
+    footerTagline: 'Le guide padel multilingue #1 pour Marbella.',
+    footerCopyright: `© ${new Date().getFullYear()} MarbellapadEL. Tous droits réservés.`,
+  },
+  es: {
+    title: 'Gracias | MarbellapadEL',
+    description: 'Gracias por ponerte en contacto con nosotros en MarbellapadEL.',
+    navBlog: 'Blog',
+    navClubs: 'Clubs',
+    navAdvertise: 'Anunciarse',
+    footerTagline: 'La guía de pádel multilingüe #1 para Marbella.',
+    footerCopyright: `© ${new Date().getFullYear()} MarbellapadEL. Todos los derechos reservados.`,
+  },
+  pl: {
+    title: 'Dziękujemy | MarbellapadEL',
+    description: 'Dziękujemy za kontakt z MarbellapadEL.',
+    navBlog: 'Blog',
+    navClubs: 'Kluby',
+    navAdvertise: 'Reklama',
+    footerTagline: 'Wielojęzyczny przewodnik padlowy #1 dla Marbelli.',
+    footerCopyright: `© ${new Date().getFullYear()} MarbellapadEL. Wszelkie prawa zastrzeżone.`,
+  },
+  no: {
+    title: 'Takk | MarbellapadEL',
+    description: 'Takk for att du kontakter oss på MarbellapadEL.',
+    navBlog: 'Blogg',
+    navClubs: 'Klubber',
+    navAdvertise: 'Annonsere',
+    footerTagline: 'Den #1 flerspråklige padelguiden for Marbella.',
+    footerCopyright: `© ${new Date().getFullYear()} MarbellapadEL. Alle rettigheter reservert.`,
+  },
+  sl: {
+    title: 'Hvala | MarbellapadEL',
+    description: 'Hvala, ker ste stopili v stik z nami.',
+    navBlog: 'Blog',
+    navClubs: 'Klubi',
+    navAdvertise: 'Oglaševanje',
+    footerTagline: 'Vodič #1 za padel v večih jezikih za Marbello.',
+    footerCopyright: `© ${new Date().getFullYear()} MarbellapadEL. Vse pravice pridržane.`,
+  },
+  hr: {
+    title: 'Hvala | MarbellapadEL',
+    description: 'Hvala što ste stupili u kontakt s nama.',
+    navBlog: 'Blog',
+    navClubs: 'Klubovi',
+    navAdvertise: 'Oglašavanje',
+    footerTagline: 'Vodič #1 za padel na više jezika za Marbello.',
+    footerCopyright: `© ${new Date().getFullYear()} MarbellapadEL. Sva prava pridržana.`,
+  },
+};
 
 export async function generateMetadata({ params }: { params: Promise<{ lang: Lang }> }): Promise<Metadata> {
   const { lang } = await params;
   const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://marbellapadel.com';
+  const meta = META[lang] || META.en;
   return {
-    title: 'Thank You | MarbellapadEL',
-    description: 'Thanks for contacting us at MarbellapadEL.',
+    title: meta.title,
+    description: meta.description,
     alternates: {
       canonical: `${BASE_URL}/${lang}/thank-you`,
       languages: {
@@ -20,38 +126,91 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: Lan
 
 export default async function ThankYouPage({ params }: { params: Promise<{ lang: Lang }> }) {
   const { lang } = await params;
+  if (!SUPPORTED_LANGS.includes(lang)) return null;
+  const meta = META[lang];
+
   return (
-    <main className="page-content" style={{ padding: '4rem 2rem', maxWidth: '800px', margin: '0 auto', fontFamily: 'system-ui, sans-serif' }}>
-      <h1 style={{ fontSize: '2.5rem', marginBottom: '1.5rem' }}>Thank You!</h1>
-      
-      <p style={{ fontSize: '1.1rem', marginBottom: '2rem', lineHeight: '1.6' }}>
-        Your message has been received. A member of the MarbellapadEL team will get back to you within 1–2 business days.
-      </p>
+    <>
+      <Navbar 
+        lang={lang} 
+        labels={{
+          blog: meta.navBlog,
+          clubs: meta.navClubs,
+          advertise: meta.navAdvertise
+        }} 
+      />
+      <main className="min-h-screen pt-32 pb-20 px-6 flex items-center">
+        <div className="max-w-3xl mx-auto text-center">
+          <div className="inline-flex items-center justify-center w-20 h-20 bg-terracotta/10 text-terracotta rounded-full mb-8">
+            <svg className="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
+            </svg>
+          </div>
+          <h1 className="text-4xl md:text-5xl font-bold font-heading text-neutral-900 mb-6 leading-tight">
+            Thank You!
+          </h1>
+          
+          <p className="text-xl text-neutral-600 leading-relaxed mb-12">
+            Your message has been received. A member of the MarbellapadEL team will get back to you within 1–2 business days.
+          </p>
 
-      <h2 style={{ fontSize: '1.8rem', marginTop: '2rem', marginBottom: '1rem' }}>While You Wait — Explore Marbella Padel</h2>
-      <p style={{ marginBottom: '1.5rem', lineHeight: '1.6' }}>
-        We've put together the most useful guides to help you plan your padel in Marbella:
-      </p>
-
-      <h3 style={{ fontSize: '1.3rem', marginTop: '1.5rem', marginBottom: '0.5rem' }}>Top Clubs</h3>
-      <ul style={{ marginBottom: '1.5rem', lineHeight: '1.8' }}>
-        <li><Link href={`/${lang}/clubs/nac-nueva-alcantara`} style={{ color: '#0066cc', textDecoration: 'none' }}>NAC Nueva Alcántara</Link> — World's best padel club 2024 & 2025</li>
-        <li><Link href={`/${lang}/clubs/puente-romano`} style={{ color: '#0066cc', textDecoration: 'none' }}>Puente Romano Beach Resort</Link> — Luxury resort padel on the Golden Mile</li>
-        <li><Link href={`/${lang}/clubs/real-club-padel-marbella`} style={{ color: '#0066cc', textDecoration: 'none' }}>Real Club Padel Marbella</Link> — The historic heart of Marbella padel</li>
-      </ul>
-
-      <h3 style={{ fontSize: '1.3rem', marginTop: '1.5rem', marginBottom: '0.5rem' }}>Essential Reading</h3>
-      <ul style={{ marginBottom: '1.5rem', lineHeight: '1.8' }}>
-        <li><Link href={`/${lang}/blog/beginners-guide-padel-marbella`} style={{ color: '#0066cc', textDecoration: 'none' }}>Beginner's Guide to Padel in Marbella</Link> — Start here if you're new to the sport</li>
-        <li><Link href={`/${lang}/blog/padel-racket-guide-2026`} style={{ color: '#0066cc', textDecoration: 'none' }}>Best Padel Rackets 2026</Link> — Find the right racket for your level</li>
-        <li><Link href={`/${lang}/blog/world-padel-tour-marbella-2026`} style={{ color: '#0066cc', textDecoration: 'none' }}>World Padel Tour Marbella 2026</Link> — Watch the pros live</li>
-      </ul>
-      
-      <div style={{ marginTop: '3rem' }}>
-        <Link href={`/${lang}`} style={{ display: 'inline-block', padding: '0.75rem 1.5rem', background: '#000', color: '#fff', textDecoration: 'none', borderRadius: '4px', fontWeight: 'bold' }}>
-          &larr; Return to Homepage
-        </Link>
-      </div>
-    </main>
+          <div className="bg-neutral-50 p-8 md:p-12 rounded-3xl border border-neutral-100 text-left">
+            <h2 className="text-2xl font-bold text-neutral-900 mb-6">While You Wait — Explore Marbella Padel</h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+              <div>
+                <h3 className="text-xs font-bold uppercase tracking-widest text-neutral-400 mb-4 text-left">Top Clubs</h3>
+                <ul className="space-y-4">
+                  <li>
+                    <Link href={`/${lang}/clubs/nac-nueva-alcantara`} className="group flex flex-col">
+                      <span className="font-bold text-neutral-900 group-hover:text-terracotta transition-colors">NAC Nueva Alcántara</span>
+                      <span className="text-sm text-neutral-500">World's best padel club 2024 & 2025</span>
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href={`/${lang}/clubs/puente-romano`} className="group flex flex-col">
+                      <span className="font-bold text-neutral-900 group-hover:text-terracotta transition-colors">Puente Romano Resort</span>
+                      <span className="text-sm text-neutral-500">Luxury resort padel on the Golden Mile</span>
+                    </Link>
+                  </li>
+                </ul>
+              </div>
+              <div>
+                <h3 className="text-xs font-bold uppercase tracking-widest text-neutral-400 mb-4 text-left">Latest Guides</h3>
+                <ul className="space-y-4">
+                  <li>
+                    <Link href={`/${lang}/blog/beginners-guide-padel-marbella`} className="group flex flex-col">
+                      <span className="font-bold text-neutral-900 group-hover:text-terracotta transition-colors text-left">Beginner's Guide</span>
+                      <span className="text-sm text-neutral-500 text-left">Everything you need to start playing</span>
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href={`/${lang}/blog/padel-racket-guide-2026`} className="group flex flex-col">
+                      <span className="font-bold text-neutral-900 group-hover:text-terracotta transition-colors text-left">Best Rackets 2026</span>
+                      <span className="text-sm text-neutral-500 text-left">Find the right gear for your level</span>
+                    </Link>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          
+          <div className="mt-12">
+            <Link href={`/${lang}`} className="btn-primary">
+              &larr; Return to Homepage
+            </Link>
+          </div>
+        </div>
+      </main>
+      <Footer 
+        lang={lang} 
+        labels={{
+          blog: meta.navBlog,
+          clubs: meta.navClubs,
+          advertise: meta.navAdvertise,
+          tagline: meta.footerTagline,
+          copyright: meta.footerCopyright
+        }} 
+      />
+    </>
   );
 }

@@ -1,14 +1,10 @@
-/**
- * app/[lang]/page.tsx
- * Homepage — multilingual entry point for all 8 supported languages
- */
-
 import Link from 'next/link';
 import Image from 'next/image';
 import type { Metadata } from 'next';
 import { getFeaturedPosts, SUPPORTED_LANGS, type Lang } from '@/lib/blog';
 import { notFound } from 'next/navigation';
-import LangSwitcher from '@/components/LangSwitcher';
+import Navbar from '@/components/Navbar';
+import Footer from '@/components/Footer';
 
 const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://marbellapadel.com';
 
@@ -32,6 +28,9 @@ interface MetaEntry {
   advertiseCta: string;
   navBlog: string;
   navClubs: string;
+  navAdvertise: string;
+  footerTagline: string;
+  footerCopyright: string;
   statsPlayers: string;
   statsLanguages: string;
   statsArticles: string;
@@ -67,6 +66,9 @@ const META: Record<Lang, MetaEntry> = {
     advertiseCta: 'Get listed as a Featured Partner →',
     navBlog: 'Blog',
     navClubs: 'Clubs',
+    navAdvertise: 'Advertise',
+    footerTagline: 'The #1 multilingual padel guide for Marbella. Discover best clubs, book courts, and expert tips.',
+    footerCopyright: `© ${new Date().getFullYear()} MarbellapadEL. All rights reserved.`,
     statsPlayers: 'global padel players',
     statsLanguages: 'languages covered',
     statsArticles: 'expert articles',
@@ -103,6 +105,9 @@ const META: Record<Lang, MetaEntry> = {
     advertiseCta: 'Als empfohlener Partner gelistet werden →',
     navBlog: 'Blog',
     navClubs: 'Clubs',
+    navAdvertise: 'Werben',
+    footerTagline: 'Der ultimative Ratgeber für Padel in Marbella. Die besten Clubs, Plätze buchen und Expertentipps.',
+    footerCopyright: `© ${new Date().getFullYear()} MarbellapadEL. Alle Rechte vorbehalten.`,
     statsPlayers: 'Padel-Spieler weltweit',
     statsLanguages: 'Sprachen',
     statsArticles: 'Expertenartikel',
@@ -139,6 +144,9 @@ const META: Record<Lang, MetaEntry> = {
     advertiseCta: 'Bli listad som utvald partner →',
     navBlog: 'Blogg',
     navClubs: 'Klubbar',
+    navAdvertise: 'Annonsera',
+    footerTagline: 'Den #1 svenska guiden till padel i Marbella. Hitta de bästa klubbarna, boka banor och läs experttips.',
+    footerCopyright: `© ${new Date().getFullYear()} MarbellapadEL. Alla rättigheter förbehållna.`,
     statsPlayers: 'padelspelare globalt',
     statsLanguages: 'språk',
     statsArticles: 'expertartiklar',
@@ -175,6 +183,9 @@ const META: Record<Lang, MetaEntry> = {
     advertiseCta: 'Geregistreerd worden als aanbevolen partner →',
     navBlog: 'Blog',
     navClubs: 'Clubs',
+    navAdvertise: 'Adverteren',
+    footerTagline: 'De #1 gids voor padel in Marbella. Ontdek de beste clubs, boek banen en lees experttips.',
+    footerCopyright: `© ${new Date().getFullYear()} MarbellapadEL. Alle rechten voorbehouden.`,
     statsPlayers: 'padelspelers wereldwijd',
     statsLanguages: 'talen',
     statsArticles: 'expertartikelen',
@@ -211,6 +222,9 @@ const META: Record<Lang, MetaEntry> = {
     advertiseCta: 'Devenir partenaire vedette →',
     navBlog: 'Blog',
     navClubs: 'Clubs',
+    navAdvertise: 'Publicité',
+    footerTagline: 'Le guide #1 du padel à Marbella. Découvrez les meilleurs clubs, réservez des courts et lisez des conseils.',
+    footerCopyright: `© ${new Date().getFullYear()} MarbellapadEL. Tous droits réservés.`,
     statsPlayers: 'joueurs de padel dans le monde',
     statsLanguages: 'langues couvertes',
     statsArticles: 'articles d\'experts',
@@ -247,6 +261,9 @@ const META: Record<Lang, MetaEntry> = {
     advertiseCta: 'Aparecer como socio destacado →',
     navBlog: 'Blog',
     navClubs: 'Clubs',
+    navAdvertise: 'Anunciarse',
+    footerTagline: 'La guía #1 del pádel en Marbella. Descubre los mejores clubs, reserva pistas y lee consejos de expertos.',
+    footerCopyright: `© ${new Date().getFullYear()} MarbellapadEL. Todos los derechos reservados.`,
     statsPlayers: 'jugadores de pádel en el mundo',
     statsLanguages: 'idiomas',
     statsArticles: 'artículos de expertos',
@@ -283,6 +300,9 @@ const META: Record<Lang, MetaEntry> = {
     advertiseCta: 'Dołącz jako polecany partner →',
     navBlog: 'Blog',
     navClubs: 'Kluby',
+    navAdvertise: 'Reklama',
+    footerTagline: 'Przewodnik #1 po padlu w Marbelli. Odkryj najlepsze kluby, zarezerwuj korty i czytaj porady ekspertów.',
+    footerCopyright: `© ${new Date().getFullYear()} MarbellapadEL. Wszelkie prawa zastrzeżone.`,
     statsPlayers: 'graczy padla na świecie',
     statsLanguages: 'języki',
     statsArticles: 'artykuły ekspertów',
@@ -319,6 +339,9 @@ const META: Record<Lang, MetaEntry> = {
     advertiseCta: 'Bli listet som anbefalt partner →',
     navBlog: 'Blogg',
     navClubs: 'Klubber',
+    navAdvertise: 'Annonsere',
+    footerTagline: 'Den #1 norske guiden til padel i Marbella. Finn de beste klubbene, book baner og les eksperttips.',
+    footerCopyright: `© ${new Date().getFullYear()} MarbellapadEL. Alle rettigheter reservert.`,
     statsPlayers: 'padelspillere globalt',
     statsLanguages: 'språk',
     statsArticles: 'ekspertartikler',
@@ -355,6 +378,9 @@ const META: Record<Lang, MetaEntry> = {
     advertiseCta: 'Pridružite se kot izpostavljeni partner →',
     navBlog: 'Blog',
     navClubs: 'Klubi',
+    navAdvertise: 'Oglaševanje',
+    footerTagline: 'Vodič #1 za padel v Marbelli. Odkrijte najboljše klube, rezervirajte igrišča in preberite nasvete.',
+    footerCopyright: `© ${new Date().getFullYear()} MarbellapadEL. Vse pravice pridržane.`,
     statsPlayers: 'padel igralcev po svetu',
     statsLanguages: 'jezikov',
     statsArticles: 'strokovnih člankov',
@@ -391,6 +417,9 @@ const META: Record<Lang, MetaEntry> = {
     advertiseCta: 'Pridružite se kao istaknuti partner →',
     navBlog: 'Blog',
     navClubs: 'Klubovi',
+    navAdvertise: 'Oglašavanje',
+    footerTagline: 'Vodič #1 za padel u Marbelli. Otkrijte najbolje klubove, rezervirajte terene i čitajte savjete.',
+    footerCopyright: `© ${new Date().getFullYear()} MarbellapadEL. Sva prava pridržana.`,
     statsPlayers: 'padel igrača globalno',
     statsLanguages: 'jezika',
     statsArticles: 'stručnih članaka',
@@ -472,23 +501,14 @@ export default async function HomePage({
 
   return (
     <>
-      {/* ── Navigation ── */}
-      <nav className="site-nav">
-        <div className="nav-inner">
-          <Link href={`/${lang}`} className="nav-logo">
-            MarbellapadEL
-          </Link>
-          <div className="nav-links">
-            <Link href={`/${lang}/clubs`} className="nav-link">
-              {meta.navClubs}
-            </Link>
-            <Link href={`/${lang}/blog`} className="nav-link">
-              {meta.navBlog}
-            </Link>
-          </div>
-          <LangSwitcher currentLang={lang} urlTemplate="/[lang]" />
-        </div>
-      </nav>
+      <Navbar 
+        lang={lang} 
+        labels={{
+          blog: meta.navBlog,
+          clubs: meta.navClubs,
+          advertise: meta.navAdvertise
+        }} 
+      />
 
       <main>
         {/* ── Hero ── */}
@@ -531,7 +551,7 @@ export default async function HomePage({
                 <span className="stat-label">{meta.statsLanguages}</span>
               </div>
               <div className="stat-item">
-                <span className="stat-number">400+</span>
+                <span className="stat-number">60</span>
                 <span className="stat-label">{meta.statsArticles}</span>
               </div>
               <div className="stat-item">
@@ -624,7 +644,7 @@ export default async function HomePage({
               <span className="banner-stat-label">{meta.statsLanguages}</span>
             </div>
             <div className="banner-stat">
-              <span className="banner-stat-number">400+</span>
+              <span className="banner-stat-number">60</span>
               <span className="banner-stat-label">{meta.statsArticles}</span>
             </div>
             <div className="banner-stat">
@@ -690,42 +710,22 @@ export default async function HomePage({
           <p className="section-label">{meta.whyLabel}</p>
           <h2 className="section-title">{meta.advertiseTitle}</h2>
           <p>{meta.advertiseBody}</p>
-          <Link href="/advertise" className="btn-primary">
+          <Link href={`/${lang}/advertise`} className="btn-primary">
             {meta.advertiseCta}
           </Link>
         </section>
       </main>
 
-      {/* ── Footer ── */}
-      <footer className="site-footer">
-        <div className="footer-inner">
-          <div>
-            <Link href={`/${lang}`} className="footer-logo">
-              MarbellapadEL
-            </Link>
-            <p className="footer-tagline">The #1 multilingual padel guide for Marbella</p>
-            <p className="footer-copyright">
-              © {new Date().getFullYear()} MarbellapadEL. All rights reserved.
-            </p>
-          </div>
-          <nav className="footer-links" aria-label="Footer navigation">
-            <Link href={`/${lang}/clubs`} className="footer-link">
-              {meta.navClubs}
-            </Link>
-            <Link href={`/${lang}/blog`} className="footer-link">
-              {meta.navBlog}
-            </Link>
-            <Link href={`/${lang}/advertise`} className="footer-link">
-              Advertise
-            </Link>
-            {SUPPORTED_LANGS.map(l => (
-              <Link key={l} href={`/${l}`} className="footer-link">
-                {l.toUpperCase()}
-              </Link>
-            ))}
-          </nav>
-        </div>
-      </footer>
+      <Footer 
+        lang={lang} 
+        labels={{
+          blog: meta.navBlog,
+          clubs: meta.navClubs,
+          advertise: meta.navAdvertise,
+          tagline: meta.footerTagline,
+          copyright: meta.footerCopyright
+        }} 
+      />
     </>
   );
 }

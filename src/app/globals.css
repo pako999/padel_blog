@@ -1665,6 +1665,54 @@ body {
 }
 
 /* ============================================================
+   Article Author Box
+   ============================================================ */
+.article-author-box {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  margin: 2rem 0 2.5rem;
+  padding: 1.25rem 1.5rem;
+  background: var(--color-cream);
+  border-radius: 8px;
+  border: 1px solid var(--color-border);
+}
+
+.article-author-avatar {
+  flex-shrink: 0;
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: 50%;
+  background: var(--color-terracotta);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 1.125rem;
+}
+
+.article-author-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.article-author-name {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 0.9375rem;
+  color: var(--color-ink);
+}
+
+.article-author-bio {
+  font-size: 0.875rem;
+  color: var(--color-muted);
+  line-height: 1.55;
+}
+
+/* ============================================================
    Article End CTA & Back link
    ============================================================ */
 .article-end-cta {

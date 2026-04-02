@@ -26,6 +26,8 @@ export interface PostMeta {
   readingTime: number;
   coverImage?: string;
   schema?: string;
+  author?: string;
+  authorBio?: string;
 }
 
 export interface Post extends PostMeta {

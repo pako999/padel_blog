@@ -18,7 +18,7 @@ const dmSans = DM_Sans({
   display: 'swap',
 });
 
-const BASE = process.env.NEXT_PUBLIC_SITE_URL || 'https://padel-blog.vercel.app';
+const BASE = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.padelmarbella.org';
 
 export const metadata: Metadata = {
   metadataBase: new URL(BASE),
@@ -46,9 +46,44 @@ export const metadata: Metadata = {
   },
 };
 
+const organizationSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: 'MarbellapadEL',
+  url: BASE,
+  logo: `${BASE}/logo.png`,
+  contactPoint: {
+    '@type': 'ContactPoint',
+    email: 'hello@marbellapadel.com',
+    contactType: 'customer support',
+  },
+};
+
+const websiteSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  name: 'MarbellapadEL',
+  url: BASE,
+  potentialAction: {
+    '@type': 'SearchAction',
+    target: `${BASE}/en/blog?q={search_term_string}`,
+    'query-input': 'required name=search_term_string',
+  },
+};
+
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html className={`${playfair.variable} ${dmSans.variable}`}>
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
+        />
+      </head>
       <body className="font-body bg-white antialiased">
         {children}
         <Analytics />

@@ -12,6 +12,8 @@ import LangSwitcher from '@/components/LangSwitcher';
 import type { Metadata } from 'next';
 import { getAllClubs } from '@/lib/clubs';
 import { SUPPORTED_LANGS, type Lang } from '@/lib/blog';
+import Navbar from '@/components/Navbar';
+import Footer from '@/components/Footer';
 import { notFound } from 'next/navigation';
 
 const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://marbellapadel.com';
@@ -23,10 +25,12 @@ interface MetaEntry {
   subtitle: string;
   navBlog: string;
   navClubs: string;
+  navAdvertise: string;
   premiumLabel: string;
   listedLabel: string;
   courtsLabel: string;
   footerTagline: string;
+  footerCopyright: string;
 }
 
 const META: Record<Lang, MetaEntry> = {
@@ -39,10 +43,12 @@ const META: Record<Lang, MetaEntry> = {
       'All 9 clubs reviewed — from award-winning flagship venues to hidden local gems.',
     navBlog: 'Blog',
     navClubs: 'Clubs',
+    navAdvertise: 'Advertise',
     premiumLabel: '★ Featured',
     listedLabel: 'Listed',
     courtsLabel: 'courts',
-    footerTagline: 'The #1 multilingual padel guide for Marbella',
+    footerTagline: 'The #1 multilingual padel guide for Marbella. Discover best clubs, book courts, and expert tips.',
+    footerCopyright: `© ${new Date().getFullYear()} MarbellapadEL. All rights reserved.`,
   },
   de: {
     title: 'Beste Padel-Clubs in Marbella — Alle 9 im Vergleich',
@@ -53,10 +59,12 @@ const META: Record<Lang, MetaEntry> = {
       'Alle 9 Clubs bewertet — von preisgekrönten Topclubs bis zu lokalen Geheimtipps.',
     navBlog: 'Blog',
     navClubs: 'Clubs',
+    navAdvertise: 'Werben',
     premiumLabel: '★ Empfohlen',
     listedLabel: 'Gelistet',
     courtsLabel: 'Plätze',
-    footerTagline: 'Der #1 mehrsprachige Padel-Ratgeber für Marbella',
+    footerTagline: 'Der #1 mehrsprachige Padel-Ratgeber für Marbella.',
+    footerCopyright: `© ${new Date().getFullYear()} MarbellapadEL. Alle Rechte vorbehalten.`,
   },
   sv: {
     title: 'Bästa Padelklubbar i Marbella — Alla 9 recenserade',
@@ -67,10 +75,12 @@ const META: Record<Lang, MetaEntry> = {
       'Alla 9 klubbar recenserade — från prisbelönta toppklubbar till lokala pärlor.',
     navBlog: 'Blogg',
     navClubs: 'Klubbar',
+    navAdvertise: 'Annonsera',
     premiumLabel: '★ Utvald',
     listedLabel: 'Listad',
     courtsLabel: 'banor',
-    footerTagline: 'Den #1 flerspråkiga padelguiden för Marbella',
+    footerTagline: 'Den #1 flerspråkiga padelguiden för Marbella.',
+    footerCopyright: `© ${new Date().getFullYear()} MarbellapadEL. Alla rättigheter förbehållna.`,
   },
   nl: {
     title: 'Beste Padelclubs in Marbella — Alle 9 beoordeeld',
@@ -81,10 +91,12 @@ const META: Record<Lang, MetaEntry> = {
       'Alle 9 clubs beoordeeld — van bekroonde topclubs tot verborgen lokale juweeltjes.',
     navBlog: 'Blog',
     navClubs: 'Clubs',
+    navAdvertise: 'Adverteren',
     premiumLabel: '★ Aanbevolen',
     listedLabel: 'Vermeld',
     courtsLabel: 'banen',
-    footerTagline: 'De #1 meertalige padelgids voor Marbella',
+    footerTagline: 'De #1 meertalige padelgids voor Marbella.',
+    footerCopyright: `© ${new Date().getFullYear()} MarbellapadEL. Alle rechten voorbehouden.`,
   },
   fr: {
     title: 'Meilleurs Clubs de Padel à Marbella — Les 9 évalués',
@@ -95,10 +107,12 @@ const META: Record<Lang, MetaEntry> = {
       'Les 9 clubs évalués — des venues primées aux joyaux locaux méconnus.',
     navBlog: 'Blog',
     navClubs: 'Clubs',
+    navAdvertise: 'Publicité',
     premiumLabel: '★ En vedette',
     listedLabel: 'Répertorié',
     courtsLabel: 'courts',
-    footerTagline: 'Le guide padel multilingue #1 pour Marbella',
+    footerTagline: 'Le guide padel multilingue #1 pour Marbella.',
+    footerCopyright: `© ${new Date().getFullYear()} MarbellapadEL. Tous droits réservés.`,
   },
   es: {
     title: 'Mejores Clubs de Pádel en Marbella — Los 9 analizados',
@@ -109,10 +123,12 @@ const META: Record<Lang, MetaEntry> = {
       'Los 9 clubs analizados — desde venues galardonados hasta joyas locales.',
     navBlog: 'Blog',
     navClubs: 'Clubs',
+    navAdvertise: 'Anunciarse',
     premiumLabel: '★ Destacado',
     listedLabel: 'Listado',
     courtsLabel: 'pistas',
-    footerTagline: 'La guía de pádel multilingüe #1 para Marbella',
+    footerTagline: 'La guía de pádel multilingüe #1 para Marbella.',
+    footerCopyright: `© ${new Date().getFullYear()} MarbellapadEL. Todos los derechos reservados.`,
   },
   pl: {
     title: 'Najlepsze Kluby Padlowe w Marbelli — Wszystkie 9 recenzji',
@@ -123,10 +139,12 @@ const META: Record<Lang, MetaEntry> = {
       'Wszystkie 9 klubów zrecenzowanych — od nagradzanych aren po lokalne perełki.',
     navBlog: 'Blog',
     navClubs: 'Kluby',
+    navAdvertise: 'Reklama',
     premiumLabel: '★ Polecany',
     listedLabel: 'Wymieniony',
     courtsLabel: 'korty',
-    footerTagline: 'Wielojęzyczny przewodnik padlowy #1 dla Marbelli',
+    footerTagline: 'Wielojęzyczny przewodnik padlowy #1 dla Marbelli.',
+    footerCopyright: `© ${new Date().getFullYear()} MarbellapadEL. Wszelkie prawa zastrzeżone.`,
   },
   no: {
     title: 'Beste Padelklubber i Marbella — Alle 9 anmeldt',
@@ -137,10 +155,12 @@ const META: Record<Lang, MetaEntry> = {
       'Alle 9 klubber anmeldt — fra prisbelønte toppklubber til skjulte lokale perler.',
     navBlog: 'Blogg',
     navClubs: 'Klubber',
+    navAdvertise: 'Annonsere',
     premiumLabel: '★ Anbefalt',
     listedLabel: 'Listet',
     courtsLabel: 'baner',
-    footerTagline: 'Den #1 flerspråklige padelguiden for Marbella',
+    footerTagline: 'Den #1 flerspråklige padelguiden for Marbella.',
+    footerCopyright: `© ${new Date().getFullYear()} MarbellapadEL. Alle rettigheter reservert.`,
   },
   sl: {
     title: 'Najboljši Padel Klubi v Marbelli — Vseh 9 ocenjenih',
@@ -151,10 +171,12 @@ const META: Record<Lang, MetaEntry> = {
       'Vseh 9 klubov ocenjenih — od nagrajenih vrhunskih objektov do skritih lokalnih draguljev.',
     navBlog: 'Blog',
     navClubs: 'Klubi',
+    navAdvertise: 'Oglaševanje',
     premiumLabel: '★ Izpostavljeni',
     listedLabel: 'Na seznamu',
     courtsLabel: 'igrišč',
-    footerTagline: 'Vodič #1 za padel v večih jezikih za Marbello',
+    footerTagline: 'Vodič #1 za padel v večih jezikih za Marbello.',
+    footerCopyright: `© ${new Date().getFullYear()} MarbellapadEL. Vse pravice pridržane.`,
   },
   hr: {
     title: 'Najbolji Padel Klubovi u Marbelli — Svih 9 recenziranih',
@@ -165,10 +187,12 @@ const META: Record<Lang, MetaEntry> = {
       'Svih 9 klubova recenzirano — od nagrađenih vrhunskih objekata do skrivenih lokalnih dragulja.',
     navBlog: 'Blog',
     navClubs: 'Klubovi',
+    navAdvertise: 'Oglašavanje',
     premiumLabel: '★ Istaknuti',
     listedLabel: 'Popisani',
     courtsLabel: 'terena',
-    footerTagline: 'Vodič #1 za padel na više jezika za Marbello',
+    footerTagline: 'Vodič #1 za padel na više jezika za Marbello.',
+    footerCopyright: `© ${new Date().getFullYear()} MarbellapadEL. Sva prava pridržana.`,
   },
 };
 
@@ -209,23 +233,14 @@ export default async function ClubsPage({
 
   return (
     <>
-      {/* ── Navigation ── */}
-      <nav className="site-nav">
-        <div className="nav-inner">
-          <Link href={`/${lang}`} className="nav-logo">
-            MarbellapadEL
-          </Link>
-          <div className="nav-links">
-            <Link href={`/${lang}/clubs`} className="nav-link">
-              {meta.navClubs}
-            </Link>
-            <Link href={`/${lang}/blog`} className="nav-link">
-              {meta.navBlog}
-            </Link>
-          </div>
-          <LangSwitcher currentLang={lang} urlTemplate="/[lang]/clubs" />
-        </div>
-      </nav>
+      <Navbar 
+        lang={lang} 
+        labels={{
+          blog: meta.navBlog,
+          clubs: meta.navClubs,
+          advertise: meta.navAdvertise
+        }} 
+      />
 
       <main>
         <div className="clubs-index">
@@ -292,33 +307,16 @@ export default async function ClubsPage({
         </div>
       </main>
 
-      {/* ── Footer ── */}
-      <footer className="site-footer">
-        <div className="footer-inner">
-          <div>
-            <Link href={`/${lang}`} className="footer-logo">
-              MarbellapadEL
-            </Link>
-            <p className="footer-tagline">{meta.footerTagline}</p>
-            <p className="footer-copyright">
-              © {new Date().getFullYear()} MarbellapadEL. All rights reserved.
-            </p>
-          </div>
-          <nav className="footer-links" aria-label="Footer navigation">
-            <Link href={`/${lang}/clubs`} className="footer-link">
-              {meta.navClubs}
-            </Link>
-            <Link href={`/${lang}/blog`} className="footer-link">
-              {meta.navBlog}
-            </Link>
-            {SUPPORTED_LANGS.map(l => (
-              <Link key={l} href={`/${l}/clubs`} className="footer-link">
-                {l.toUpperCase()}
-              </Link>
-            ))}
-          </nav>
-        </div>
-      </footer>
+      <Footer 
+        lang={lang} 
+        labels={{
+          blog: meta.navBlog,
+          clubs: meta.navClubs,
+          advertise: meta.navAdvertise,
+          tagline: meta.footerTagline,
+          copyright: meta.footerCopyright
+        }} 
+      />
     </>
   );
 }

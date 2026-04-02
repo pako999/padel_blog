@@ -5,7 +5,6 @@
 
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
-import LangSwitcher from '@/components/LangSwitcher';
 import Image from 'next/image';
 import type { Metadata } from 'next';
 import { MDXRemote } from 'next-mdx-remote/rsc';
@@ -16,6 +15,8 @@ import {
   SUPPORTED_LANGS,
   type Lang,
 } from '@/lib/blog';
+import Navbar from '@/components/Navbar';
+import Footer from '@/components/Footer';
 
 const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://marbellapadel.com';
 
@@ -26,7 +27,10 @@ interface UiStrings {
   ctaTitle: string;
   ctaBody: string;
   ctaBtn: string;
+  navClubs: string;
+  navAdvertise: string;
   footerTagline: string;
+  footerCopyright: string;
 }
 
 const UI: Record<Lang, UiStrings> = {
@@ -37,7 +41,10 @@ const UI: Record<Lang, UiStrings> = {
     ctaTitle: 'Own a padel club in Marbella?',
     ctaBody: 'Get featured on the #1 Marbella padel guide. Reach thousands of players searching for courts every month.',
     ctaBtn: 'List your club →',
-    footerTagline: 'The #1 multilingual padel guide for Marbella',
+    navClubs: 'Clubs',
+    navAdvertise: 'Advertise',
+    footerTagline: 'The #1 multilingual padel guide for Marbella. Discover best clubs, book courts, and expert tips.',
+    footerCopyright: `© ${new Date().getFullYear()} MarbellapadEL. All rights reserved.`,
   },
   de: {
     blog: 'Blog',
@@ -46,7 +53,10 @@ const UI: Record<Lang, UiStrings> = {
     ctaTitle: 'Haben Sie einen Padel-Club in Marbella?',
     ctaBody: 'Erscheinen Sie im #1 Marbella Padel-Ratgeber. Erreichen Sie tausende Spieler jeden Monat.',
     ctaBtn: 'Club eintragen →',
-    footerTagline: 'Der #1 mehrsprachige Padel-Ratgeber für Marbella',
+    navClubs: 'Clubs',
+    navAdvertise: 'Werben',
+    footerTagline: 'Der #1 mehrsprachige Padel-Ratgeber für Marbella.',
+    footerCopyright: `© ${new Date().getFullYear()} MarbellapadEL. Alle Rechte vorbehalten.`,
   },
   sv: {
     blog: 'Blogg',
@@ -55,7 +65,10 @@ const UI: Record<Lang, UiStrings> = {
     ctaTitle: 'Äger du en padelklubb i Marbella?',
     ctaBody: 'Bli presenterad i den #1 padelguiden för Marbella. Nå tusentals spelare varje månad.',
     ctaBtn: 'Lista din klubb →',
-    footerTagline: 'Den #1 flerspråkiga padelguiden för Marbella',
+    navClubs: 'Klubbar',
+    navAdvertise: 'Annonsera',
+    footerTagline: 'Den #1 flerspråkiga padelguiden för Marbella.',
+    footerCopyright: `© ${new Date().getFullYear()} MarbellapadEL. Alla rättigheter förbehållna.`,
   },
   nl: {
     blog: 'Blog',
@@ -64,7 +77,10 @@ const UI: Record<Lang, UiStrings> = {
     ctaTitle: 'Heeft u een padelclub in Marbella?',
     ctaBody: 'Word gepresenteerd in de #1 Marbella padelgids. Bereik duizenden spelers elke maand.',
     ctaBtn: 'Uw club vermelden →',
-    footerTagline: 'De #1 meertalige padelgids voor Marbella',
+    navClubs: 'Clubs',
+    navAdvertise: 'Adverteren',
+    footerTagline: 'De #1 meertalige padelgids voor Marbella.',
+    footerCopyright: `© ${new Date().getFullYear()} MarbellapadEL. Alle rechten voorbehouden.`,
   },
   fr: {
     blog: 'Blog',
@@ -73,7 +89,10 @@ const UI: Record<Lang, UiStrings> = {
     ctaTitle: 'Vous avez un club de padel à Marbella?',
     ctaBody: "Soyez présenté dans le guide padel #1 de Marbella. Touchez des milliers de joueurs chaque mois.",
     ctaBtn: 'Lister votre club →',
-    footerTagline: 'Le guide padel multilingue #1 pour Marbella',
+    navClubs: 'Clubs',
+    navAdvertise: 'Publicité',
+    footerTagline: 'Le guide padel multilingue #1 pour Marbella.',
+    footerCopyright: `© ${new Date().getFullYear()} MarbellapadEL. Tous droits réservés.`,
   },
   es: {
     blog: 'Blog',
@@ -82,7 +101,10 @@ const UI: Record<Lang, UiStrings> = {
     ctaTitle: '¿Tienes un club de pádel en Marbella?',
     ctaBody: 'Aparece en la guía de pádel #1 de Marbella. Llega a miles de jugadores cada mes.',
     ctaBtn: 'Listar tu club →',
-    footerTagline: 'La guía de pádel multilingüe #1 para Marbella',
+    navClubs: 'Clubs',
+    navAdvertise: 'Anunciarse',
+    footerTagline: 'La guía de pádel multilingüe #1 para Marbella.',
+    footerCopyright: `© ${new Date().getFullYear()} MarbellapadEL. Todos los derechos reservados.`,
   },
   pl: {
     blog: 'Blog',
@@ -91,7 +113,10 @@ const UI: Record<Lang, UiStrings> = {
     ctaTitle: 'Masz klub padlowy w Marbelli?',
     ctaBody: 'Zaistniej w przewodniku padlowym #1 dla Marbelli. Dotrzyj do tysięcy graczy każdego miesiąca.',
     ctaBtn: 'Dodaj swój klub →',
-    footerTagline: 'Wielojęzyczny przewodnik padlowy #1 dla Marbelli',
+    navClubs: 'Kluby',
+    navAdvertise: 'Reklama',
+    footerTagline: 'Wielojęzyczny przewodnik padlowy #1 dla Marbelli.',
+    footerCopyright: `© ${new Date().getFullYear()} MarbellapadEL. Wszelkie prawa zastrzeżone.`,
   },
   no: {
     blog: 'Blogg',
@@ -100,7 +125,10 @@ const UI: Record<Lang, UiStrings> = {
     ctaTitle: 'Eier du en padelklubb i Marbella?',
     ctaBody: 'Bli presentert i den #1 padelguiden for Marbella. Nå tusenvis av spillere hver måned.',
     ctaBtn: 'List klubben din →',
-    footerTagline: 'Den #1 flerspråklige padelguiden for Marbella',
+    navClubs: 'Klubber',
+    navAdvertise: 'Annonsere',
+    footerTagline: 'Den #1 flerspråklige padelguiden for Marbella.',
+    footerCopyright: `© ${new Date().getFullYear()} MarbellapadEL. Alle rettigheter reservert.`,
   },
   sl: {
     blog: 'Blog',
@@ -109,7 +137,10 @@ const UI: Record<Lang, UiStrings> = {
     ctaTitle: 'Imate padel klub v Marbelli?',
     ctaBody: 'Bodite predstavljeni v vodiču #1 za padel v Marbelli. Dosezite tisoče igralcev vsak mesec.',
     ctaBtn: 'Dodajte vaš klub →',
-    footerTagline: 'Vodič #1 za padel v večih jezikih za Marbello',
+    navClubs: 'Klubi',
+    navAdvertise: 'Oglaševanje',
+    footerTagline: 'Vodič #1 za padel v večih jezikih za Marbello.',
+    footerCopyright: `© ${new Date().getFullYear()} MarbellapadEL. Vse pravice pridržane.`,
   },
   hr: {
     blog: 'Blog',
@@ -118,7 +149,10 @@ const UI: Record<Lang, UiStrings> = {
     ctaTitle: 'Imate padel klub u Marbelli?',
     ctaBody: 'Budite predstavljeni u vodiču #1 za padel u Marbelli. Dosegnite tisuće igrača svaki mjesec.',
     ctaBtn: 'Dodajte vaš klub →',
-    footerTagline: 'Vodič #1 za padel na više jezika za Marbello',
+    navClubs: 'Klubovi',
+    navAdvertise: 'Oglašavanje',
+    footerTagline: 'Vodič #1 za padel na više jezika za Marbello.',
+    footerCopyright: `© ${new Date().getFullYear()} MarbellapadEL. Sva prava pridržana.`,
   },
 };
 
@@ -194,6 +228,34 @@ export default async function BlogPostPage({
     if (post.schema) schemaJson = JSON.parse(post.schema);
   } catch {}
 
+  const articleSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'BlogPosting',
+    headline: post.title,
+    description: post.description,
+    datePublished: post.publishedAt,
+    dateModified: post.updatedAt || post.publishedAt,
+    image: post.coverImage || `${BASE_URL}/logo.png`,
+    url: `${BASE_URL}/${lang}/blog/${slug}`,
+    inLanguage: lang,
+    author: post.author ? {
+      '@type': 'Person',
+      name: post.author,
+      description: post.authorBio,
+    } : {
+      '@type': 'Organization',
+      name: 'MarbellapadEL',
+      url: BASE_URL,
+    },
+    publisher: {
+      '@type': 'Organization',
+      name: 'MarbellapadEL',
+      url: BASE_URL,
+      logo: { '@type': 'ImageObject', url: `${BASE_URL}/logo.png` },
+    },
+    keywords: post.keywords?.join(', '),
+  };
+
   return (
     <>
       {/* Hreflang tags */}
@@ -202,6 +264,10 @@ export default async function BlogPostPage({
       ))}
       <link rel="alternate" hrefLang="x-default" href={`${BASE_URL}/en/blog/${slug}`} />
 
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
+      />
       {schemaJson && (
         <script
           type="application/ld+json"
@@ -209,19 +275,14 @@ export default async function BlogPostPage({
         />
       )}
 
-      {/* ── Navigation ── */}
-      <nav className="site-nav">
-        <div className="nav-inner">
-          <Link href={`/${lang}`} className="nav-logo">
-            MarbellapadEL
-          </Link>
-          <div className="nav-links">
-            <Link href={`/${lang}/clubs`} className="nav-link">{ui.clubs}</Link>
-            <Link href={`/${lang}/blog`} className="nav-link">{ui.blog}</Link>
-          </div>
-          <LangSwitcher currentLang={lang} urlTemplate={`/[lang]/blog/${slug}`} />
-        </div>
-      </nav>
+      <Navbar 
+        lang={lang} 
+        labels={{
+          blog: ui.blog,
+          clubs: ui.navClubs,
+          advertise: ui.navAdvertise
+        }} 
+      />
 
       <main>
         <article className="article-page">
@@ -269,6 +330,19 @@ export default async function BlogPostPage({
             <p className="article-description">{post.description}</p>
           </header>
 
+          {/* Author bio */}
+          {post.author && (
+            <div className="article-author-box">
+              <div className="article-author-avatar">{post.author.charAt(0)}</div>
+              <div className="article-author-info">
+                <span className="article-author-name">{post.author}</span>
+                {post.authorBio && (
+                  <span className="article-author-bio">{post.authorBio}</span>
+                )}
+              </div>
+            </div>
+          )}
+
           {/* MDX content with full prose styles */}
           <div className="prose">
             <MDXRemote source={post.content} />
@@ -289,28 +363,16 @@ export default async function BlogPostPage({
         </article>
       </main>
 
-      {/* ── Footer ── */}
-      <footer className="site-footer">
-        <div className="footer-inner">
-          <div>
-            <Link href={`/${lang}`} className="footer-logo">MarbellapadEL</Link>
-            <p className="footer-tagline">{ui.footerTagline}</p>
-            <p className="footer-copyright">
-              © {new Date().getFullYear()} MarbellapadEL. All rights reserved.
-            </p>
-          </div>
-          <nav className="footer-links" aria-label="Footer navigation">
-            <Link href={`/${lang}/clubs`} className="footer-link">{ui.clubs}</Link>
-            <Link href={`/${lang}/blog`} className="footer-link">{ui.blog}</Link>
-            <Link href="/advertise" className="footer-link">Advertise</Link>
-            {SUPPORTED_LANGS.map(l => (
-              <Link key={l} href={`/${l}/blog/${slug}`} className="footer-link">
-                {l.toUpperCase()}
-              </Link>
-            ))}
-          </nav>
-        </div>
-      </footer>
+      <Footer 
+        lang={lang} 
+        labels={{
+          blog: ui.blog,
+          clubs: ui.navClubs,
+          advertise: ui.navAdvertise,
+          tagline: ui.footerTagline,
+          copyright: ui.footerCopyright
+        }} 
+      />
     </>
   );
 }
