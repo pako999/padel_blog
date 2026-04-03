@@ -4,7 +4,7 @@
  */
 
 import Link from 'next/link';
-import LangSwitcher from '@/components/LangSwitcher';
+import Image from 'next/image';
 import type { Metadata } from 'next';
 import { getClub, getClubSlugs, getRelatedClubs } from '@/lib/clubs';
 import { SUPPORTED_LANGS, type Lang } from '@/lib/blog';
@@ -416,6 +416,23 @@ export default async function ClubProfilePage({
               <li key={h}>{h}</li>
             ))}
           </ul>
+
+          {/* Photo Gallery */}
+          {club.images && club.images.length > 0 && (
+            <div className="club-gallery">
+              {club.images.map((src, i) => (
+                <div key={i} className="club-gallery-item">
+                  <Image
+                    src={src}
+                    alt={`${club.name} — photo ${i + 1}`}
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                  />
+                </div>
+              ))}
+            </div>
+          )}
 
           {/* Book & Contact */}
           <div className="booking-section">

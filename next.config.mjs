@@ -12,6 +12,11 @@ const nextConfig = {
       { protocol: 'https', hostname: 'lh4.googleusercontent.com' },
       { protocol: 'https', hostname: 'lh5.googleusercontent.com' },
       { protocol: 'https', hostname: 'lh6.googleusercontent.com' },
+      { protocol: 'https', hostname: 'upload.wikimedia.org' },
+      { protocol: 'https', hostname: 'www.puenteromano.com' },
+      { protocol: 'https', hostname: 'realclubpadelmarbella.com' },
+      { protocol: 'https', hostname: 'manolosantana.es' },
+      { protocol: 'https', hostname: 'clubinternacionalmarbella.es' },
     ],
   },
 

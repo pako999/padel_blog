@@ -24,6 +24,7 @@ export interface Club {
   description: string;
   highlights: string[];
   coordinates: { lat: number; lng: number };
+  images?: string[];
 }
 
 export const CLUBS: Club[] = [
@@ -54,6 +55,12 @@ export const CLUBS: Club[] = [
       'Open to all — no membership required, book via Taykus',
     ],
     coordinates: { lat: 36.4796, lng: -4.9842 },
+    images: [
+      'https://upload.wikimedia.org/wikipedia/commons/1/17/Mejorset_Full_Panoramic_Padel_Court_Delivered_by_SG_Padel.jpg',
+      'https://upload.wikimedia.org/wikipedia/commons/1/1f/Outdoor_padel_court_Mariestad.jpg',
+      'https://upload.wikimedia.org/wikipedia/commons/a/a6/Sanchez-Casal_Paddle_Tennis_Game.jpg',
+      'https://upload.wikimedia.org/wikipedia/commons/e/ee/Vigo_Open_2019_de_World_Padel_Tour_-_38.jpg',
+    ],
   },
   {
     slug: 'puente-romano',
@@ -81,6 +88,15 @@ export const CLUBS: Club[] = [
       'Six on-site restaurants',
     ],
     coordinates: { lat: 36.5071, lng: -4.9234 },
+    images: [
+      'https://www.puenteromano.com/media/1htgukru/prbr_tennisclub_2023_27-danibarbaran.jpg',
+      'https://www.puenteromano.com/media/lmclqmat/puenteromanotennisclub-6.jpg',
+      'https://www.puenteromano.com/media/tybhhxu5/_d1a3851.jpg',
+      'https://www.puenteromano.com/media/iqapgsgc/prbr_tennisclub_2023_10-danibarbaran.jpg',
+      'https://www.puenteromano.com/media/1fxnnqvy/puenteromanotennisclub-4.jpg',
+      'https://www.puenteromano.com/media/zrhbvfku/_d1a3319.jpg',
+      'https://www.puenteromano.com/media/uzxftc3p/prbr_tennisclub_2023_1-danibarbaran.jpg',
+    ],
   },
   {
     slug: 'real-club-padel-marbella',
@@ -108,6 +124,13 @@ export const CLUBS: Club[] = [
       'Resident coaching staff',
     ],
     coordinates: { lat: 36.51, lng: -4.885 },
+    images: [
+      'https://realclubpadelmarbella.com/wp-content/uploads/2025/06/REAL-CLUB-PADEL-MARBELLA-GYM-GALLERY-1.jpg',
+      'https://realclubpadelmarbella.com/wp-content/uploads/2025/06/REAL-CLUB-PADEL-MARBELLA-GYM-GALLERY-2.jpg',
+      'https://realclubpadelmarbella.com/wp-content/uploads/2025/06/REAL-CLUB-PADEL-MARBELLA-GYM-GALLERY-3.jpg',
+      'https://realclubpadelmarbella.com/wp-content/uploads/2025/06/REAL-CLUB-PADEL-MARBELLA-GYM-GALLERY-4.jpg',
+      'https://realclubpadelmarbella.com/wp-content/uploads/2025/06/REAL-CLUB-PADEL-MARBELLA-GYM-GALLERY-5.jpg',
+    ],
   },
   {
     slug: 'manolo-santana-racquets',
@@ -135,6 +158,13 @@ export const CLUBS: Club[] = [
       'Members-only social events',
     ],
     coordinates: { lat: 36.4694, lng: -5.0095 },
+    images: [
+      'https://manolosantana.es/NEW2/PADEL.jpg',
+      'https://manolosantana.es/NEW2/PISTAS-TENIS.jpg',
+      'https://manolosantana.es/NEW2/RESTAURANTE.jpg',
+      'https://manolosantana.es/NEW2/PISCINA.jpg',
+      'https://manolosantana.es/NEW2/GYM.jpg',
+    ],
   },
   {
     slug: 'los-monteros-racket',
@@ -162,6 +192,11 @@ export const CLUBS: Club[] = [
       'Ideal for hotel guests and locals',
     ],
     coordinates: { lat: 36.5185, lng: -4.8416 },
+    images: [
+      'https://upload.wikimedia.org/wikipedia/commons/1/17/Mejorset_Full_Panoramic_Padel_Court_Delivered_by_SG_Padel.jpg',
+      'https://upload.wikimedia.org/wikipedia/commons/1/1f/Outdoor_padel_court_Mariestad.jpg',
+      'https://upload.wikimedia.org/wikipedia/commons/a/a6/Sanchez-Casal_Paddle_Tennis_Game.jpg',
+    ],
   },
   {
     slug: 'el-mirador-padel',
@@ -189,6 +224,11 @@ export const CLUBS: Club[] = [
       'Group and individual lessons',
     ],
     coordinates: { lat: 36.525, lng: -4.898 },
+    images: [
+      'https://upload.wikimedia.org/wikipedia/commons/1/1f/Outdoor_padel_court_Mariestad.jpg',
+      'https://upload.wikimedia.org/wikipedia/commons/a/a6/Sanchez-Casal_Paddle_Tennis_Game.jpg',
+      'https://upload.wikimedia.org/wikipedia/commons/e/ee/Vigo_Open_2019_de_World_Padel_Tour_-_38.jpg',
+    ],
   },
   {
     slug: 'villa-padierna-padel',
@@ -216,6 +256,11 @@ export const CLUBS: Club[] = [
       'Golf & spa access for guests',
     ],
     coordinates: { lat: 36.485, lng: -5.025 },
+    images: [
+      'https://upload.wikimedia.org/wikipedia/commons/1/17/Mejorset_Full_Panoramic_Padel_Court_Delivered_by_SG_Padel.jpg',
+      'https://upload.wikimedia.org/wikipedia/commons/1/1f/Outdoor_padel_court_Mariestad.jpg',
+      'https://upload.wikimedia.org/wikipedia/commons/a/a6/Sanchez-Casal_Paddle_Tennis_Game.jpg',
+    ],
   },
   {
     slug: 'itc-marbella',
@@ -243,6 +288,15 @@ export const CLUBS: Club[] = [
       'Annual Marbella Open qualifier event',
     ],
     coordinates: { lat: 36.508, lng: -4.938 },
+    images: [
+      'https://clubinternacionalmarbella.es/wp-content/uploads/2022/06/club-de-padel-marbella.jpg',
+      'https://clubinternacionalmarbella.es/wp-content/uploads/2022/06/club-de-tenis-internacional.jpg',
+      'https://clubinternacionalmarbella.es/wp-content/uploads/2022/06/club-de-tenis-1.jpg',
+      'https://clubinternacionalmarbella.es/wp-content/uploads/2022/06/image6_1.jpeg',
+      'https://clubinternacionalmarbella.es/wp-content/uploads/2022/06/image7_1.jpeg',
+      'https://clubinternacionalmarbella.es/wp-content/uploads/2022/06/plexipave.jpg',
+      'https://clubinternacionalmarbella.es/wp-content/uploads/2022/06/hard-surface-court.jpg',
+    ],
   },
   {
     slug: 'racket-club-los-granados',
@@ -270,5 +324,10 @@ export const CLUBS: Club[] = [
       'Junior friendly',
     ],
     coordinates: { lat: 36.461, lng: -5.038 },
+    images: [
+      'https://upload.wikimedia.org/wikipedia/commons/1/1f/Outdoor_padel_court_Mariestad.jpg',
+      'https://upload.wikimedia.org/wikipedia/commons/a/a6/Sanchez-Casal_Paddle_Tennis_Game.jpg',
+      'https://upload.wikimedia.org/wikipedia/commons/1/17/Mejorset_Full_Panoramic_Padel_Court_Delivered_by_SG_Padel.jpg',
+    ],
   },
 ];
