@@ -44,7 +44,9 @@
     "cluster": "club-review",
     "priority": 1,
     "audience": "padel players",
-    "status": "pending"
+    "status": "published",
+    "slug": "nac-nueva-alcantara-padel-club-review",
+    "publishedAt": "2026-04-07T06:27:57.287Z"
   },
   {
     "id": 6,
