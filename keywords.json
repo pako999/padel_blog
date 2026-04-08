@@ -55,7 +55,9 @@
     "cluster": "club-review",
     "priority": 1,
     "audience": "luxury travellers",
-    "status": "pending"
+    "status": "published",
+    "slug": "puente-romano-padel-club-marbella",
+    "publishedAt": "2026-04-08T06:28:45.405Z"
   },
   {
     "id": 7,
