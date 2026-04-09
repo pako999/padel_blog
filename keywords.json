@@ -102,7 +102,9 @@
     "cluster": "travel",
     "priority": 1,
     "audience": "tourists",
-    "status": "pending"
+    "status": "published",
+    "slug": "padel-costa-del-sol-guide",
+    "publishedAt": "2026-04-09T06:29:30.546Z"
   },
   {
     "id": 12,
