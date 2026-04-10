@@ -122,7 +122,9 @@
     "cluster": "travel",
     "priority": 1,
     "audience": "luxury travellers",
-    "status": "pending"
+    "status": "published",
+    "slug": "luxury-padel-holiday-marbella-spain",
+    "publishedAt": "2026-04-10T06:33:12.436Z"
   },
   {
     "id": 14,
