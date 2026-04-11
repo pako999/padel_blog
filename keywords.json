@@ -151,7 +151,9 @@
     "cluster": "travel",
     "priority": 1,
     "audience": "German tourists",
-    "status": "pending"
+    "status": "published",
+    "slug": "padel-marbella-urlaub-tipps",
+    "publishedAt": "2026-04-11T06:19:51.078Z"
   },
   {
     "id": 17,
