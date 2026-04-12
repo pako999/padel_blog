@@ -162,7 +162,9 @@
     "cluster": "local-commercial",
     "priority": 1,
     "audience": "German tourists",
-    "status": "pending"
+    "status": "published",
+    "slug": "beste-padel-clubs-marbella",
+    "publishedAt": "2026-04-12T06:29:46.778Z"
   },
   {
     "id": 18,
