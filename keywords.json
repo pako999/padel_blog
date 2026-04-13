@@ -173,7 +173,9 @@
     "cluster": "travel",
     "priority": 1,
     "audience": "German tourists",
-    "status": "pending"
+    "status": "published",
+    "slug": "padel-urlaub-costa-del-sol",
+    "publishedAt": "2026-04-13T06:39:31.721Z"
   },
   {
     "id": 19,
