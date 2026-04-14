@@ -193,7 +193,9 @@
     "cluster": "travel",
     "priority": 1,
     "audience": "Swedish tourists",
-    "status": "pending"
+    "status": "published",
+    "slug": "padel-marbella-semester-guide",
+    "publishedAt": "2026-04-14T06:32:56.830Z"
   },
   {
     "id": 21,
