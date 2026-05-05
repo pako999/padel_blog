@@ -204,7 +204,9 @@
     "cluster": "local-commercial",
     "priority": 1,
     "audience": "Swedish tourists",
-    "status": "pending"
+    "status": "published",
+    "slug": "basta-padel-klubbar-marbella",
+    "publishedAt": "2026-05-05T06:42:07.252Z"
   },
   {
     "id": 22,
