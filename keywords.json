@@ -215,7 +215,9 @@
     "cluster": "travel",
     "priority": 1,
     "audience": "Dutch tourists",
-    "status": "pending"
+    "status": "published",
+    "slug": "padel-marbella-vakantie-tips",
+    "publishedAt": "2026-05-06T06:50:25.903Z"
   },
   {
     "id": 23,
