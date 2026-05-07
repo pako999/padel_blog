@@ -226,7 +226,9 @@
     "cluster": "local-commercial",
     "priority": 1,
     "audience": "Dutch tourists",
-    "status": "pending"
+    "status": "published",
+    "slug": "beste-padel-clubs-marbella-nederland",
+    "publishedAt": "2026-05-07T06:55:09.267Z"
   },
   {
     "id": 24,
