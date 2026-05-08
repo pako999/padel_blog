@@ -237,7 +237,9 @@
     "cluster": "travel",
     "priority": 1,
     "audience": "French tourists",
-    "status": "pending"
+    "status": "published",
+    "slug": "padel-marbella-guide-francais",
+    "publishedAt": "2026-05-08T06:32:36.552Z"
   },
   {
     "id": 25,
