@@ -248,7 +248,9 @@
     "cluster": "local-commercial",
     "priority": 1,
     "audience": "French tourists",
-    "status": "pending"
+    "status": "published",
+    "slug": "meilleurs-clubs-padel-marbella",
+    "publishedAt": "2026-05-09T06:40:20.053Z"
   },
   {
     "id": 26,
