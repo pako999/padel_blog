@@ -259,7 +259,9 @@
     "cluster": "local-commercial",
     "priority": 1,
     "audience": "Spanish players",
-    "status": "pending"
+    "status": "published",
+    "slug": "mejor-club-padel-marbella",
+    "publishedAt": "2026-05-10T06:50:43.333Z"
   },
   {
     "id": 27,
