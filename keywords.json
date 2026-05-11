@@ -279,7 +279,9 @@
     "cluster": "travel",
     "priority": 1,
     "audience": "Polish tourists",
-    "status": "pending"
+    "status": "published",
+    "slug": "padel-marbella-wakacje-polska",
+    "publishedAt": "2026-05-11T07:04:23.863Z"
   },
   {
     "id": 29,
