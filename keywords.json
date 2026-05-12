@@ -290,7 +290,9 @@
     "cluster": "travel",
     "priority": 1,
     "audience": "Norwegian tourists",
-    "status": "pending"
+    "status": "published",
+    "slug": "padel-marbella-ferie-tips",
+    "publishedAt": "2026-05-12T06:53:27.379Z"
   },
   {
     "id": 30,
