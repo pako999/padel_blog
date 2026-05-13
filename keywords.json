@@ -301,7 +301,9 @@
     "cluster": "local-info",
     "priority": 1,
     "audience": "tourists",
-    "status": "pending"
+    "status": "published",
+    "slug": "where-to-play-padel-marbella",
+    "publishedAt": "2026-05-13T06:57:06.895Z"
   },
   {
     "id": 31,
