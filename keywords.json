@@ -312,7 +312,9 @@
     "cluster": "educational",
     "priority": 1,
     "audience": "Slovenian tourists",
-    "status": "pending"
+    "status": "published",
+    "slug": "padel-marbella-pocetniki-vodic",
+    "publishedAt": "2026-05-14T06:55:53.596Z"
   },
   {
     "id": 32,
