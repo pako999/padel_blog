@@ -323,7 +323,9 @@
     "cluster": "local-commercial",
     "priority": 1,
     "audience": "Slovenian tourists",
-    "status": "pending"
+    "status": "published",
+    "slug": "najboljsi-padel-klubi-marbella",
+    "publishedAt": "2026-05-15T07:01:11.401Z"
   },
   {
     "id": 33,
