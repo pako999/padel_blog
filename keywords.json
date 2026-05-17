@@ -345,6 +345,8 @@
     "cluster": "local-commercial",
     "priority": 1,
     "audience": "Croatian tourists",
-    "status": "pending"
+    "status": "published",
+    "slug": "najbolji-padel-klubovi-marbella",
+    "publishedAt": "2026-05-17T06:53:34.621Z"
   }
 ]
