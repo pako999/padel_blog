@@ -24,7 +24,9 @@
     "cluster": "educational",
     "priority": 2,
     "audience": "beginners",
-    "status": "pending"
+    "status": "published",
+    "slug": "padel-lessons-marbella-beginners",
+    "publishedAt": "2026-05-18T07:15:21.071Z"
   },
   {
     "id": 4,
