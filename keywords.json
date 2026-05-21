@@ -68,7 +68,9 @@
     "cluster": "club-review",
     "priority": 2,
     "audience": "padel players",
-    "status": "pending"
+    "status": "published",
+    "slug": "real-club-padel-marbella-review",
+    "publishedAt": "2026-05-21T07:11:23.597Z"
   },
   {
     "id": 8,
