@@ -79,7 +79,9 @@
     "cluster": "local-info",
     "priority": 2,
     "audience": "expats",
-    "status": "pending"
+    "status": "published",
+    "slug": "padel-marbella-expats-guide",
+    "publishedAt": "2026-05-23T06:51:14.273Z"
   },
   {
     "id": 9,
