@@ -90,7 +90,9 @@
     "cluster": "events",
     "priority": 2,
     "audience": "competitive players",
-    "status": "pending"
+    "status": "published",
+    "slug": "padel-tournament-marbella-2026",
+    "publishedAt": "2026-05-24T07:01:37.767Z"
   },
   {
     "id": 10,
