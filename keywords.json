@@ -121,7 +121,9 @@
     "cluster": "educational",
     "priority": 2,
     "audience": "families",
-    "status": "pending"
+    "status": "published",
+    "slug": "padel-marbella-for-kids-academy",
+    "publishedAt": "2026-05-25T07:26:03.414Z"
   },
   {
     "id": 13,
