@@ -143,7 +143,9 @@
     "cluster": "club-review",
     "priority": 2,
     "audience": "padel players",
-    "status": "pending"
+    "status": "published",
+    "slug": "manolo-santana-racquets-club-padel",
+    "publishedAt": "2026-05-27T07:19:59.311Z"
   },
   {
     "id": 15,
