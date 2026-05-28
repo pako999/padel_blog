@@ -154,7 +154,9 @@
     "cluster": "club-review",
     "priority": 2,
     "audience": "padel players",
-    "status": "pending"
+    "status": "published",
+    "slug": "los-monteros-racket-club-marbella",
+    "publishedAt": "2026-05-28T07:13:30.720Z"
   },
   {
     "id": 16,
