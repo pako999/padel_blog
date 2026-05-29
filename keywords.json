@@ -198,7 +198,9 @@
     "cluster": "educational",
     "priority": 2,
     "audience": "German beginners",
-    "status": "pending"
+    "status": "published",
+    "slug": "padel-marbella-anfanger-kurs",
+    "publishedAt": "2026-05-29T07:13:26.005Z"
   },
   {
     "id": 20,
