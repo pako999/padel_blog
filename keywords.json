@@ -286,7 +286,9 @@
     "cluster": "educational",
     "priority": 2,
     "audience": "Spanish beginners",
-    "status": "pending"
+    "status": "published",
+    "slug": "clases-padel-marbella-principiantes",
+    "publishedAt": "2026-05-30T06:56:05.626Z"
   },
   {
     "id": 28,
