@@ -101,7 +101,9 @@
     "cluster": "local-info",
     "priority": 3,
     "audience": "tourists",
-    "status": "pending"
+    "status": "published",
+    "slug": "indoor-padel-marbella-rainy-day",
+    "publishedAt": "2026-05-31T07:14:00.571Z"
   },
   {
     "id": 11,
